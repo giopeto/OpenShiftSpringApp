@@ -1,0 +1,20 @@
+{
+  "name": "Spring XML Config Starter",
+  "version": "1.0.0",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.6",
+    "angular-route": "~1.4.4",
+    "angular-resource": "~1.4.6",
+    "bootstrap": "~3.3.5",
+    "requirejs": "~2.1.20"
+  }
+}

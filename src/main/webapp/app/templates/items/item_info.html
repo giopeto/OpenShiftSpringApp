@@ -1,0 +1,70 @@
+<section ng-controller="itemsCtrl as vm">
+
+
+
+    <div class="container wow fadeInUp">
+        <h2>{{vm.obj.name}}</h2>
+
+        <h3>{{vm.obj.shortDescription}}</h3>
+        <img class="card-img-top img-fluid" src="serve?blob-key={{vm.obj.aFileIds[0]}}" alt="Item image">
+        <p class="lead">
+            {{vm.obj.description}}
+        </p>
+
+        <div id="galleryModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="https://placehold.it/1200x700/222?text=..." id="galleryImage" class="center-block img-fluid">
+                        <p>
+                            <br>
+                            <button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true">Close <i class="ion-android-close"></i></button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="row">
+                    <div class="col-xl-3 col-xl-offset-0 col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-4 col-sm-6 text-xs-center" ng-repeat="row in vm.obj.aFileIds" ng-if="$index>0">
+                        <div class="card center-block">
+
+                            <img  src="serve?blob-key={{row}}" alt="Item image" class="img-fluid">
+                            <div class="card-img-overlay">
+                                <h4 class="card-title text-xs-center">
+                                    <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample21.jpg">view</a>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+
+        <div ng-if="main.user.id">
+            <button type="button" class="btn btn-success" ng-click="vm.addToBasket(vm.obj)"><span class="glyphicon glyphicon-pencil"></span> Add to basket</button>
+            <div class="form-group">
+                <label for="comment">Comment: </label>
+                <textarea ng-model="vm.obj.comment" class="form-control" rows="5" id="comment"></textarea>
+                <button type="button" class="btn btn-success" ng-click="vm.addComment({row: vm.obj, comment: vm.obj.comment})"><span class="glyphicon glyphicon-pencil"></span> Add comment</button>
+            </div>
+        </div>
+
+        <div ng-repeat="comment in vm.obj.comments">
+            <img src="{{vm.allUsersAsHash[comment.userId].picture}}" class="profile-image img-circle img-responsive"/>{{vm.allUsersAsHash[comment.userId].given_name}} {{vm.allUsersAsHash[comment.userId].family_name}}:<br> {{comment.comment}}
+            <br><br><br>
+        </div>
+
+        <pre>
+            {{vm | json}}
+        </pre>
+
+    </div>
+
+
+
+</section>
