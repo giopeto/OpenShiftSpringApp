@@ -20,17 +20,12 @@ public class GroupServiceImpl implements GroupService {
 		return repository.save(g);
 	}
 
-	public List<Group> get() {
-		System.out.println(repository);
-		return repository.findAll();
-	}
-
+	public List<Group> get() {return repository.findAll();}
 
 	public Group getById(String id) {
 		return repository.findById(id);
 	}
 
-	public String delete(String id) {return repository.deleteById(id);
-		 }
+	public String delete(String id) {return repository.deleteById(id);}
 
 }

@@ -7,8 +7,7 @@ import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-//@EnableMongoRepositories(basePackages = "com")
-@EnableMongoRepositories(basePackages="com.groups.repository")
+@EnableMongoRepositories(basePackages="com.*.repository")
 class MongoConfig extends AbstractMongoConfiguration {
 	@Override
 	public Mongo mongo() throws Exception {
@@ -22,6 +21,6 @@ class MongoConfig extends AbstractMongoConfiguration {
 
 	@Override
 	protected String getMappingBasePackage() {
-		return "com.groups.repository";
+		return "com.*.repository";
 	}
 }
