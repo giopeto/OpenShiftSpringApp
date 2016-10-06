@@ -1,1 +1,1 @@
-# Spring-JAVA-Config-Starter
+# OpenShiftSpringApp
