@@ -74,7 +74,7 @@ ngApp.config(function ($controllerProvider, $compileProvider, $filterProvider, $
 		}
 
 	}).when('/items_add_edit/:id', {
-		templateUrl: 'app/templates/items/items_add_edit.html',
+		templateUrl: 'app/items/items_add_edit.html',
 			resolve: {
 			load: ['$q', '$rootScope', function ($q, $rootScope) {
 				var deferred = $q.defer();
@@ -95,7 +95,7 @@ ngApp.config(function ($controllerProvider, $compileProvider, $filterProvider, $
 		}
 
 	}).when('/item_info/:id', {
-		templateUrl: 'app/templates/items/item_info.html',
+		templateUrl: 'app/items/item_info.html',
 		resolve: {
 			load: ['$q', '$rootScope', function ($q, $rootScope) {
 				var deferred = $q.defer();

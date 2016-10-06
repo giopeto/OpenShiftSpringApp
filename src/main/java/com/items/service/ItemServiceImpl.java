@@ -29,6 +29,7 @@ public class ItemServiceImpl implements ItemService{
 		if(item.getDate()==null) {
 			item.setDate(new Date());
 		}
+		System.out.println(item.toString());
 		repository.save(item);
 		return item;
 	}

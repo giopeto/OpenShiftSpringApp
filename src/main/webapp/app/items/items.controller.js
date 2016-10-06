@@ -84,7 +84,7 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 	};
 
 	function addEdit (args){
-		var id = args.id > 0 ? args.id : 0;
+		var id = args.id ? args.id : null;
 		$location.path('/items_add_edit/'+id);
 	};
 
@@ -169,7 +169,7 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 		update();
 	};
 
-	if ($routeParams.id > 0) {
+	if ($routeParams.id) {
 		changeLoadingState();
 		vm.obj = ItemFactory.get({ id: $routeParams.id }, function (data) {
 			changeLoadingState();
@@ -179,7 +179,7 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 			changeLoadingState();
 		});
 		getAllUsers();
-	} else if ($routeParams.groupId > 0){
+	} else if ($routeParams.groupId){
 		changeLoadingState();
 		$http.get('items/getByGroupId/'+$routeParams.groupId, {
 

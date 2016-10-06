@@ -5,12 +5,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.*;
 
 
-@Document(collection = "groups")
+@Document(collection = "items")
 public class Item {
 
 	@Id private String id;
 	private String name;
-	private Long groupId;
+	private String groupId;
 	private String shortDescription;
 	private String description;
 	private Double price;
@@ -25,7 +25,7 @@ public class Item {
 
 	public Item(String id) {this.id = id;}
 
-	public Item(String id, String name, Long groupId, String shortDescription, String description, Double price, boolean archive, Date date, Map<String, String> fileIds, List<Map<String, String>> comments) {
+	public Item(String id, String name, String groupId, String shortDescription, String description, Double price, boolean archive, Date date, Map<String, String> fileIds, List<Map<String, String>> comments) {
 		this.id = id;
 		this.name = name;
 		this.groupId = groupId;
@@ -55,11 +55,11 @@ public class Item {
 		this.name = name;
 	}
 
-	public Long getGroupId() {
+	public String getGroupId() {
 		return groupId;
 	}
 
-	public void setGroupId(Long groupId) {
+	public void setGroupId(String groupId) {
 		this.groupId = groupId;
 	}
 
@@ -119,7 +119,7 @@ public class Item {
 		this.comments = comments;
 	}
 
-	/*@Override
+	@Override
 	public String toString() {
 		return "Item{" +
 				"id=" + id +
@@ -132,5 +132,5 @@ public class Item {
 				", date=" + date +
 				", fileIds=" + fileIds +
 				'}';
-	}*/
+	}
 }
