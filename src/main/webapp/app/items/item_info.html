@@ -4,7 +4,7 @@
         <h2>{{vm.obj.name}}</h2>
 
         <h3>{{vm.obj.shortDescription}}</h3>
-        <img class="card-img-top img-fluid" src="serve?blob-key={{vm.obj.aFileIds[0]}}" alt="Item image">
+        <img class="card-img-top img-fluid col-lg-6" src="files/{{vm.obj.fileIds[0]}}" alt="Item image">
         <p class="lead">
             {{vm.obj.description}}
         </p>
@@ -26,11 +26,10 @@
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
                 <div class="row">
-                    <div class="col-xl-3 col-xl-offset-0 col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-4 col-sm-6 text-xs-center" ng-repeat="row in vm.obj.aFileIds" ng-if="$index>0">
+                    <div class="col-xl-3 col-xl-offset-0 col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-4 col-sm-6 text-xs-center" ng-repeat="row in vm.obj.fileIds" ng-if="$index>0">
                         <div class="card center-block">
-
-                            <img  src="serve?blob-key={{row}}" alt="Item image" class="img-fluid">
-                            <div class="card-img-overlay">
+                            <img class="img-fluid" src="files/{{row}}" alt="Item image">
+                                <div class="card-img-overlay">
                                 <h4 class="card-title text-xs-center">
                                     <a class="text-light" href="#galleryModal" data-toggle="modal" data-src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample21.jpg">view</a>
                                 </h4>
@@ -57,9 +56,9 @@
             <br><br><br>
         </div>
 
-        <pre>
+       <!-- <pre>
             {{vm | json}}
-        </pre>
+        </pre>-->
 
     </div>
 

@@ -173,7 +173,7 @@ ngApp.config(function ($controllerProvider, $compileProvider, $filterProvider, $
 				return deferred.promise;
 			}]
 		}
-	/*}).when('/files_add_edit/:id', {
+	}).when('/files_add_edit/:id', {
 		templateUrl: 'app/files/files_add_edit.jsp',
 		resolve: {
 			load: ['$q', '$rootScope', function ($q, $rootScope) {
@@ -191,7 +191,7 @@ ngApp.config(function ($controllerProvider, $compileProvider, $filterProvider, $
 				return deferred.promise;
 			}]
 		}
-*/
+
 	}).when('/ps_add_edit/:id', {
 		templateUrl: 'app/ps/ps_add_edit.html',
 		resolve: {

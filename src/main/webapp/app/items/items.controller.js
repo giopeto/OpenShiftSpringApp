@@ -96,22 +96,22 @@ ngApp.lazy.controller('itemsCtrl', function($rootScope, $scope, $log, $routePara
 	};
 
 	function changeFilesOrder (args) {
-		/*var tmpArr = [];
-		angular.copy(vm.obj.aFileIds, tmpArr);
+		var tmpArr = [];
+		angular.copy(vm.obj.fileIds, tmpArr);
 
 		if (args.direction === 'up') {
-			tmpArr[args.index] = vm.obj.aFileIds[args.index-1];
-			tmpArr[args.index-1] = vm.obj.aFileIds[args.index];
+			tmpArr[args.index] = vm.obj.fileIds[args.index-1];
+			tmpArr[args.index-1] = vm.obj.fileIds[args.index];
 		} else {
-			tmpArr[args.index] = vm.obj.aFileIds[args.index+1];
-			tmpArr[args.index+1] = vm.obj.aFileIds[args.index];
+			tmpArr[args.index] = vm.obj.fileIds[args.index+1];
+			tmpArr[args.index+1] = vm.obj.fileIds[args.index];
 		}
 
-		vm.obj.aFileIds = tmpArr;*/
+		vm.obj.fileIds = tmpArr;
 	};
 
 	function removeFile (args) {
-		//vm.obj.aFileIds.splice(args.index, 1);
+		vm.obj.fileIds.splice(args.index, 1);
 	};
 
 
