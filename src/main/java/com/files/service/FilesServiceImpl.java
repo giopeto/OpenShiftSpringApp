@@ -42,21 +42,6 @@ public class FilesServiceImpl implements FilesService{
 	public GridFSDBFile getById(String id) {
 		GridFSDBFile gridFile = gridFsTemplate.findOne(new Query(Criteria.where("_id").is(id)));
 		return gridFile;
-		/*FileOutputStream fos = null;
-		try {
-			gridFile.writeTo(fos);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println(fos);
-		return  fos;*/
 	}
-
-
-	/*public List findByIds(MultipartFile f) {
-
-		List<GridFSDBFile> gridFsdbFiles =
-				operations.find(new Query(Criteria.where("_id").in())));
-	}*/
 
 }
