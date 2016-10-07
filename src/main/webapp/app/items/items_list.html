@@ -10,7 +10,8 @@
         <div class="row">
             <div class="col-sm-6" ng-repeat="row in vm.allObj">
                 <div class="card card-block text-xs-center">
-                    <img class="card-img-top img-fluid" src="serve?blob-key={{row.aFileIds[0]}}" alt="Item image">
+                    <img class="card-img-top img-fluid" src="files/{{row.fileIds[0]}}" alt="Item image">
+
                     <div class="card-block">
                         <h4 class="card-title">{{row.name}}</h4>
                         <p class="card-text">{{row.shortDescription}}</p>

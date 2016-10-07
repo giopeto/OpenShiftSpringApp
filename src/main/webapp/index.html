@@ -11,7 +11,7 @@
 	<title>Core GAE</title>
 
 	<style>
-		
+
 	</style>
 	<!-- Bootstrap core CSS -->
 	<!--<link href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
@@ -73,7 +73,7 @@
 				<ul class="nav navbar-nav pull-xs-right" ng-if="main.user.id>0">
 					<li class="nav-item">
 						<a class="nav-link page-scroll" href="#">
-							<img src="{{main.user.picture}}" class="profile-image img-circle img-fluid" ng-if="main.user.picture!==''"/>
+							<!--<img src="{{main.user.picture}}" class="profile-image img-circle img-fluid" ng-if="main.user.picture!==''"/>-->
 							Hello {{main.user.given_name}}
 						</a>
 					</li>
@@ -178,6 +178,7 @@
 	<script src="app/local_storage/local_storage.service.js"></script>
 	<script src="app/groups/group.service.js"></script>
 	<script src="app/ps/ps.service.js"></script>
+	<script src="app/files/my-image.directive.js"></script>
 	<script src="resources/bower_components/requirejs/require.js"></script>
 	<script src="resources/bower_components/satellizer/satellizer.js"></script>
 	

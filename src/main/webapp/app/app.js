@@ -6,7 +6,7 @@ ngApp.controller('mainCtrl', function($scope, $http, $log, localStorageService, 
 	$scope.main = {
 		user: localStorageService.get("user"),
 		allGroups:  GroupFactory.query(),
-		ps: PSFactory.query({id: localStorageService.get("psId")}),
+		//ps: PSFactory.query({id: localStorageService.get("psId")}),
 	};
 
 	$scope.logOut = function () {
@@ -81,7 +81,9 @@ ngApp.config(function ($controllerProvider, $compileProvider, $filterProvider, $
 				require([
 					'app/items/items.controller.js',
 					'app/items/item.service.js',
-					'app/users/user.service.js'
+					'app/users/user.service.js',
+					'app/files/files.directive.js',
+					'app/files/files.controller.js'
 					/*'app/groups/group.service.js',*/
 				], function () {
 					$rootScope.$apply(function () {
@@ -171,13 +173,13 @@ ngApp.config(function ($controllerProvider, $compileProvider, $filterProvider, $
 				return deferred.promise;
 			}]
 		}
-	}).when('/files_add_edit/:id', {
+	/*}).when('/files_add_edit/:id', {
 		templateUrl: 'app/files/files_add_edit.jsp',
 		resolve: {
 			load: ['$q', '$rootScope', function ($q, $rootScope) {
 				var deferred = $q.defer();
 				require([
-					'app/files/files_add_edit.js',
+					'app/files/files.controller.js',
 					'app/items/item.service.js',
 				], function () {
 					$rootScope.$apply(function () {
@@ -189,7 +191,7 @@ ngApp.config(function ($controllerProvider, $compileProvider, $filterProvider, $
 				return deferred.promise;
 			}]
 		}
-
+*/
 	}).when('/ps_add_edit/:id', {
 		templateUrl: 'app/ps/ps_add_edit.html',
 		resolve: {

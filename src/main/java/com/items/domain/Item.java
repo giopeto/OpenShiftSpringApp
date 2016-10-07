@@ -17,7 +17,7 @@ public class Item {
 	private boolean archive;
 	private Date date;
 
-	public Map<String, String> fileIds = new HashMap<String, String>();
+	public List<String> fileIds = new ArrayList<String>();
 
 	public List<Map<String, String>> comments  = new ArrayList<Map<String, String>>();
 
@@ -25,7 +25,7 @@ public class Item {
 
 	public Item(String id) {this.id = id;}
 
-	public Item(String id, String name, String groupId, String shortDescription, String description, Double price, boolean archive, Date date, Map<String, String> fileIds, List<Map<String, String>> comments) {
+	public Item(String id, String name, String groupId, String shortDescription, String description, Double price, boolean archive, Date date,  List<String> fileIds, List<Map<String, String>> comments) {
 		this.id = id;
 		this.name = name;
 		this.groupId = groupId;
@@ -103,11 +103,11 @@ public class Item {
 		this.date = date;
 	}
 
-	public Map<String, String> getFileIds() {
+	public  List<String> getFileIds() {
 		return fileIds;
 	}
 
-	public void setFileIds(Map<String, String> fileIds) {
+	public void setFileIds(List<String> fileIds) {
 		this.fileIds = fileIds;
 	}
 

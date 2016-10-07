@@ -24,12 +24,10 @@ public class ItemServiceImpl implements ItemService{
 		this.repository = repository;
 	}
 
-
 	public Item save(Item item) {
 		if(item.getDate()==null) {
 			item.setDate(new Date());
 		}
-		System.out.println(item.toString());
 		repository.save(item);
 		return item;
 	}

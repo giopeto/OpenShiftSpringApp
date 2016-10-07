@@ -12,7 +12,6 @@
                     <tr ng-repeat="row in vm.allObj">
                         <td>{{row.name}}</td>
                         <td><button type="button" class="btn btn-success btn-sm" ng-click="vm.addEdit(row)"><i class="ion-edit"></i>&nbsp;Edit</button></td>
-                        <td><a type="button" class="btn btn-primary btn-sm" href="index.html#/files_add_edit/{{row.id}}" role="button"><i class="ion-camera"></i>&nbsp;Add image</a></td>
                         <td><button type="button" class="btn btn-danger btn-sm" ng-click="vm.remove({id: row.id, index: $index})"><i class="ion-trash-a"></i>&nbsp;Delete</button></td>
                     </tr>
                 </tbody>

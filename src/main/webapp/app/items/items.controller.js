@@ -2,12 +2,14 @@
 
 /* Items Controller */
 
-ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $location, $http, ItemFactory, GroupFactory, PSFactory, localStorageService, UserFactory) {
+ngApp.lazy.controller('itemsCtrl', function($rootScope, $scope, $log, $routeParams, $location, $http, ItemFactory, GroupFactory, PSFactory, localStorageService, UserFactory) {
 	var vm = this;
 
 	vm.isLoading = false;
 	vm.errorMsg = {};
-	vm.obj = {};
+	vm.obj = {
+		fileIds: []
+	};
 	vm.allObj = [];
 	vm.allGroups =  [];
 	vm.allGroups =  GroupFactory.query();
@@ -45,12 +47,6 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 
 	function update () {
 		changeLoadingState();
-
-		vm.obj.fileIds = {};
-		vm.obj.aFileIds.forEach(function(val, key) {
-			vm.obj.fileIds[key] = val.toString();
-		});
-
 		ItemFactory.update(vm.obj, function (data) {
 			if (!skipGoBack) {
 				goBack();
@@ -75,7 +71,6 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 	function get () {
 		changeLoadingState();
 		vm.allObj = ItemFactory.query({}, function() {
-			makeViewItem(vm.allObj);
 			changeLoadingState();
 		}, function (error) {
 			$log.log ("Error: ", error);
@@ -84,7 +79,7 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 	};
 
 	function addEdit (args){
-		var id = args.id ? args.id : null;
+		var id = args.id ? args.id : "new";
 		$location.path('/items_add_edit/'+id);
 	};
 
@@ -100,22 +95,8 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 		vm.isLoading = !vm.isLoading;
 	};
 
-
-	function makeViewItem (args) {
-		var arr = [];
-		args.forEach(function(value, key) {
-			value.groupId = String(value.groupId);
-			angular.forEach(value.fileIds, function (fileValue, fileKey){
-				arr[parseInt(fileKey)] = fileValue;
-			});
-			value.aFileIds = arr.filter(function(n){ return n != undefined });
-			arr = [];
-		});
-
-	};
-
 	function changeFilesOrder (args) {
-		var tmpArr = [];
+		/*var tmpArr = [];
 		angular.copy(vm.obj.aFileIds, tmpArr);
 
 		if (args.direction === 'up') {
@@ -126,11 +107,11 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 			tmpArr[args.index+1] = vm.obj.aFileIds[args.index];
 		}
 
-		vm.obj.aFileIds = tmpArr;
+		vm.obj.aFileIds = tmpArr;*/
 	};
 
 	function removeFile (args) {
-		vm.obj.aFileIds.splice(args.index, 1);
+		//vm.obj.aFileIds.splice(args.index, 1);
 	};
 
 
@@ -169,11 +150,19 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 		update();
 	};
 
-	if ($routeParams.id) {
+	$rootScope.$on('filesChanged', function(args, data){
+
+		$log.log (data);
+
+		vm.obj.fileIds.push(data.fileId);
+	});
+
+	if ($routeParams.id && $routeParams.id != "new") {
 		changeLoadingState();
 		vm.obj = ItemFactory.get({ id: $routeParams.id }, function (data) {
 			changeLoadingState();
-			makeViewItem([vm.obj]);
+			console.log (vm.obj);
+
 		}, function (error) {
 			$log.log ("Error: ", error);
 			changeLoadingState();
@@ -185,13 +174,13 @@ ngApp.lazy.controller('itemsCtrl', function($scope, $log, $routeParams, $locatio
 
 		}).success(function(data) {
 			vm.allObj = data;
-			makeViewItem(vm.allObj);
 			changeLoadingState();
 		}).error(function(error) {
 			$log.log("ERROR: "+error);
 			changeLoadingState();
 		});
 	} else {
+
 		get();
 	}
 
