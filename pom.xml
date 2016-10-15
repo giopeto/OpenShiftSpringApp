@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com</groupId>
     <artifactId>SpringJavaConfigStarter</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -11,6 +10,7 @@
     <properties>
         <spring.version>4.2.6.RELEASE</spring.version>
         <spring.data.version>1.6.1.RELEASE</spring.data.version>
+        <spring.security.version>4.1.3.RELEASE</spring.security.version>
         <jackson.version>2.4.1</jackson.version>
     </properties>
 
@@ -43,7 +43,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
         <!-- Jackson JSON Mapper -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -72,11 +81,11 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.21</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>1.6.0.RELEASE</version>
-        </dependency>
+        </dependency>-->
         <!-- Apache Commons Upload -->
         <dependency>
             <groupId>commons-fileupload</groupId>
