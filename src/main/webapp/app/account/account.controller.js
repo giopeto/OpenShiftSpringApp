@@ -32,7 +32,6 @@ ngApp.lazy.controller('accountsCtrl', function($scope, $log, $location, $http, A
 		});
 	}
 
-
 	function authenticate () {
 		$http.get('/accounts/').success(function(data) {
 			localStorageService.set("user", data);
