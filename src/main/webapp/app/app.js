@@ -10,9 +10,15 @@ ngApp.controller('mainCtrl', function($scope, $http, $log, localStorageService, 
 	};
 
 	$scope.logOut = function () {
-		localStorageService.remove("user");
-		$scope.main.user = {};
+		$http.get('/accounts/logOut').success(function(data) {
+			localStorageService.remove("user");
+			$scope.main.user = {};
+		}).error(function(error) {
+			$log.log("ERROR: ", error);
+			$scope.main.user = {};
+		});
 	};
+
 
 });
 
