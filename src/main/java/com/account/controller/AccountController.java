@@ -56,10 +56,10 @@ public class AccountController {
 		accountService.signin(a);
 	}
 
-	@RequestMapping(value = "account/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "{id}", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody
-	@Secured("ROLE_ADMIN")
+	@Secured("ROLE_USER")
 	public Account account(@PathVariable("id") String id) {
 		return accountRepository.findOne(id);
 	}
