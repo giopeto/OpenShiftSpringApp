@@ -14,33 +14,33 @@ import java.util.Map;
 @RestController
 @RequestMapping("/files")
 public class FilesController {
-	@Autowired
-	FilesService fs;
+    @Autowired
+    FilesService fs;
 
-	@RequestMapping(
-			method = RequestMethod.POST,
-			headers="Accept=application/json",
-			produces="application/json"
-	)
-	public  Map<String, String> save(@RequestParam("file") MultipartFile f) {
-		MultipartFile file = f;
-		return fs.store(f);
-	}
+    @RequestMapping(
+            method = RequestMethod.POST,
+            headers = "Accept=application/json",
+            produces = "application/json"
+    )
+    public Map<String, String> save(@RequestParam("file") MultipartFile f) {
+        MultipartFile file = f;
+        return fs.store(f);
+    }
 
-	@RequestMapping(
-			value="{fileId}",
-			method = RequestMethod.GET,
-			headers="Accept=application/json",
-			produces="application/json"
-	)
-	public ResponseEntity<InputStreamResource> getById (@PathVariable String fileId) {
-		System.out.println("ID: " + fileId);
-		GridFSDBFile gridFsFile = fs.getById(fileId);
+    @RequestMapping(
+            value = "{fileId}",
+            method = RequestMethod.GET,
+            headers = "Accept=application/json",
+            produces = "application/json"
+    )
+    public ResponseEntity<InputStreamResource> getById(@PathVariable String fileId) {
+        System.out.println("ID: " + fileId);
+        GridFSDBFile gridFsFile = fs.getById(fileId);
 
-		return ResponseEntity.ok()
-				.contentLength(gridFsFile.getLength())
-				.contentType(MediaType.parseMediaType(gridFsFile.getContentType()))
-				.body(new InputStreamResource(gridFsFile.getInputStream()));
-	}
+        return ResponseEntity.ok()
+                .contentLength(gridFsFile.getLength())
+                .contentType(MediaType.parseMediaType(gridFsFile.getContentType()))
+                .body(new InputStreamResource(gridFsFile.getInputStream()));
+    }
 
 }

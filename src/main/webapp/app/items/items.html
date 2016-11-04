@@ -1,23 +1,33 @@
 <section ng-controller="itemsCtrl as vm">
     <div class="container wow fadeInUp">
         <h2>Items</h2>
-       <!-- <p class="lead">
-            What you notice first in <a href="http://v4-alpha.getbootstrap.com/">Bootstrap 4</a> is that <code>.panel</code> and <code>.well</code> have been replaced by the <code>.card</code>. This makes a lot of sense as "cards" are one of the more well known trends in responsive design.
-            The <a href="">Bootstrap 4 Cards</a> can be singular, grouped together (as shown) or <a href="">equal height</a>. There are many different layout and content options.
-        </p>-->
+        <!-- <p class="lead">
+             What you notice first in <a href="http://v4-alpha.getbootstrap.com/">Bootstrap 4</a> is that <code>.panel</code> and <code>.well</code> have been replaced by the <code>.card</code>. This makes a lot of sense as "cards" are one of the more well known trends in responsive design.
+             The <a href="">Bootstrap 4 Cards</a> can be singular, grouped together (as shown) or <a href="">equal height</a>. There are many different layout and content options.
+         </p>-->
 
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <tbody>
-                    <tr ng-repeat="row in vm.allObj">
-                        <td>{{row.name}}</td>
-                        <td><button type="button" class="btn btn-success btn-sm" ng-click="vm.addEdit(row)"><i class="ion-edit"></i>&nbsp;Edit</button></td>
-                        <td><button type="button" class="btn btn-danger btn-sm" ng-click="vm.remove({id: row.id, index: $index})"><i class="ion-trash-a"></i>&nbsp;Delete</button></td>
-                    </tr>
+                <tr ng-repeat="row in vm.allObj">
+                    <td>{{row.name}}</td>
+                    <td>
+                        <button type="button" class="btn btn-success btn-sm" ng-click="vm.addEdit(row)"><i
+                                class="ion-edit"></i>&nbsp;Edit
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm"
+                                ng-click="vm.remove({id: row.id, index: $index})"><i class="ion-trash-a"></i>&nbsp;Delete
+                        </button>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
-        <button type="submit" class="btn btn-success btn-lg btn-block" ng-click="vm.addEdit({})"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add new</button>
+        <button type="submit" class="btn btn-success btn-lg btn-block" ng-click="vm.addEdit({})"><span
+                class="glyphicon glyphicon-plus"></span>&nbsp;Add new
+        </button>
     </div>
 </section>
 

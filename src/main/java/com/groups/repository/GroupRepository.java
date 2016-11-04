@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GroupRepository extends MongoRepository<Group, String> {
-	Group findById(String id);
-	String deleteById(String id);
+    Group findById(String id);
+
+    String deleteById(String id);
 }

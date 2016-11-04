@@ -4,10 +4,13 @@
         <div ng-repeat="row in vm.obj.items">
             <h2>
                 {{row.name}}
-                <button type="button" class="btn btn-danger pull-right" ng-click="vm.removeItem($index)"><i class="ion-trash-a"></i> Remove</button>
+                <button type="button" class="btn btn-danger pull-right"
+                        ng-click="vm.removeItem({id: row.id, index: $index})"><i class="ion-trash-a"></i> Remove
+                </button>
 
             </h2>
             <p>{{row.shortDescription}}</p>
+            <p>Quantity: {{vm.obj.quantity[row.id]}}</p>
             <hr/>
         </div>
 

@@ -15,33 +15,34 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+
 @Service
-public class FilesServiceImpl implements FilesService{
+public class FilesServiceImpl implements FilesService {
 
-	@Autowired
-	GridFsOperations operations;
+    @Autowired
+    GridFsOperations operations;
 
-	@Autowired
-	GridFsTemplate gridFsTemplate;
+    @Autowired
+    GridFsTemplate gridFsTemplate;
 
-	public Map store(MultipartFile f) {
+    public Map store(MultipartFile f) {
 
-		InputStream inputStream = null;
-		try {
-			inputStream = f.getInputStream();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		DBObject metaData = new BasicDBObject();
-		metaData.put("type", "item");
-		Map<String,String> myMap = new HashMap<String, String>();
-		myMap.put("id", gridFsTemplate.store(inputStream, f.getOriginalFilename(), f.getContentType(), metaData).getId().toString());
-		return myMap;
-	}
+        InputStream inputStream = null;
+        try {
+            inputStream = f.getInputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        DBObject metaData = new BasicDBObject();
+        metaData.put("type", "item");
+        Map<String, String> myMap = new HashMap<String, String>();
+        myMap.put("id", gridFsTemplate.store(inputStream, f.getOriginalFilename(), f.getContentType(), metaData).getId().toString());
+        return myMap;
+    }
 
-	public GridFSDBFile getById(String id) {
-		GridFSDBFile gridFile = gridFsTemplate.findOne(new Query(Criteria.where("_id").is(id)));
-		return gridFile;
-	}
+    public GridFSDBFile getById(String id) {
+        GridFSDBFile gridFile = gridFsTemplate.findOne(new Query(Criteria.where("_id").is(id)));
+        return gridFile;
+    }
 
 }

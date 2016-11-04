@@ -13,13 +13,16 @@
                     <img class="card-img-top img-fluid" src="files/{{row.fileIds[0]}}" alt="Item image">
 
 
-
                     <div class="card-block">
                         <h4 class="card-title">{{row.name}}</h4>
                         <p class="card-text">{{row.shortDescription}}</p>
                     </div>
-                    <button type="button" class="btn btn-primary" ng-click="vm.info({id: row.id})"><span class="glyphicon glyphicon-pencil"></span> More Info</button>
-                    <button type="button" class="btn btn-success" ng-click="vm.addToBasket(row)"><span class="glyphicon glyphicon-pencil"></span> Add to basket</button>
+                    <button type="button" class="btn btn-primary" ng-click="vm.info({id: row.id})"><span
+                            class="glyphicon glyphicon-pencil"></span> More Info
+                    </button>
+                    <button type="button" class="btn btn-success" ng-click="vm.addToBasket(row)"><span
+                            class="glyphicon glyphicon-pencil"></span> Add to basket
+                    </button>
                 </div>
             </div>
         </div>

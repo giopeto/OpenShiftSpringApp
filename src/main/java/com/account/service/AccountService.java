@@ -25,53 +25,53 @@ import java.util.Collections;
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class AccountService implements UserDetailsService {
 
-	@Autowired
-	private AccountRepository accountRepository;
+    @Autowired
+    private AccountRepository accountRepository;
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-	@PostConstruct
-	protected void initialize() {
-		//save(new Account("user", "demo", "ROLE_USER"));
-		//save(new Account("admin", "admin", "ROLE_ADMIN"));
-	}
+    @PostConstruct
+    protected void initialize() {
+        //save(new Account("user", "demo", "ROLE_USER"));
+        //save(new Account("admin", "admin", "ROLE_ADMIN"));
+    }
 
-	@Transactional
-	public Account save(Account account) {
-		account.setPassword(passwordEncoder.encode(account.getPassword()));
-		accountRepository.save(account);
+    @Transactional
+    public Account save(Account account) {
+        account.setPassword(passwordEncoder.encode(account.getPassword()));
+        accountRepository.save(account);
 
-		if (account.getId() != null) {
-			signin(account);
-		}
+        if (account.getId() != null) {
+            signin(account);
+        }
 
-		return account;
-	}
+        return account;
+    }
 
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Account account = accountRepository.findOneByEmail(username);
-		if(account == null) {
-			throw new UsernameNotFoundException("user not found");
-		}
-		return createUser(account);
-	}
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Account account = accountRepository.findOneByEmail(username);
+        if (account == null) {
+            throw new UsernameNotFoundException("user not found");
+        }
+        return createUser(account);
+    }
 
-	public void signin(Account account) {
-		SecurityContextHolder.getContext().setAuthentication(authenticate(account));
-	}
+    public void signin(Account account) {
+        SecurityContextHolder.getContext().setAuthentication(authenticate(account));
+    }
 
-	private Authentication authenticate(Account account) {
-		Authentication auth = new  UsernamePasswordAuthenticationToken(createUser(account), null, Collections.singleton(createAuthority(account)));
-		return new UsernamePasswordAuthenticationToken(createUser(account), null, Collections.singleton(createAuthority(account)));
-	}
+    private Authentication authenticate(Account account) {
+        Authentication auth = new UsernamePasswordAuthenticationToken(createUser(account), null, Collections.singleton(createAuthority(account)));
+        return new UsernamePasswordAuthenticationToken(createUser(account), null, Collections.singleton(createAuthority(account)));
+    }
 
-	private User createUser(Account account) {
-		return new User(account.getEmail(), account.getPassword(), Collections.singleton(createAuthority(account)));
-	}
+    private User createUser(Account account) {
+        return new User(account.getEmail(), account.getPassword(), Collections.singleton(createAuthority(account)));
+    }
 
-	private GrantedAuthority createAuthority(Account account) {
-		return new SimpleGrantedAuthority(account.getRole());
-	}
+    private GrantedAuthority createAuthority(Account account) {
+        return new SimpleGrantedAuthority(account.getRole());
+    }
 
 }

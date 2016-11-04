@@ -9,25 +9,25 @@ import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-@EnableMongoRepositories(basePackages="com.*.repository")
+@EnableMongoRepositories(basePackages = "com.*.repository")
 class MongoConfig extends AbstractMongoConfiguration {
-	@Override
-	public Mongo mongo() throws Exception {
-		return new MongoClient();
-	}
+    @Override
+    public Mongo mongo() throws Exception {
+        return new MongoClient();
+    }
 
-	@Override
-	protected String getDatabaseName() {
-		return "springdata";
-	}
+    @Override
+    protected String getDatabaseName() {
+        return "springdata";
+    }
 
-	@Override
-	protected String getMappingBasePackage() {
-		return "com.*.repository";
-	}
+    @Override
+    protected String getMappingBasePackage() {
+        return "com.*.repository";
+    }
 
-	@Bean
-	public GridFsTemplate gridFsTemplate() throws Exception {
-		return new GridFsTemplate(mongoDbFactory(), mappingMongoConverter());
-	}
+    @Bean
+    public GridFsTemplate gridFsTemplate() throws Exception {
+        return new GridFsTemplate(mongoDbFactory(), mappingMongoConverter());
+    }
 }

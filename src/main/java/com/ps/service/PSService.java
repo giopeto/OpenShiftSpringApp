@@ -8,12 +8,16 @@ import java.util.List;
 @Service
 public interface PSService {
 
-	public PS save(PS ps);
-	public List<PS> get();
-	public PS getById(String id);
-	public List<PS> getByUserId(String id);
-	public void delete(Long id);
+    public PS save(PS ps);
 
-	public PS createEmptyPS(String userId);
+    public List<PS> get();
+
+    public PS getById(String id);
+
+    public List<PS> getByUserId(String id);
+
+    public void delete(Long id);
+
+    public PS createEmptyPS(String userId);
 
 }

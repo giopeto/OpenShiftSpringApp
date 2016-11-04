@@ -14,22 +14,22 @@ import java.util.List;
 @RequestMapping("/ps")
 public class PSController {
 
-	private final Logger logger = LoggerFactory.getLogger(PSController.class);
+    private final Logger logger = LoggerFactory.getLogger(PSController.class);
 
-	@Autowired
-	private PSService psService;
+    @Autowired
+    private PSService psService;
 
-	@RequestMapping(
-			method = RequestMethod.POST,
-			headers="Accept=application/json",
-			produces="application/json"
-	)
-	public PS save(@RequestBody PS ps) {
+    @RequestMapping(
+            method = RequestMethod.POST,
+            headers = "Accept=application/json",
+            produces = "application/json"
+    )
+    public PS save(@RequestBody PS ps) {
 
-		System.out.println(ps.toString());
+        System.out.println(ps.toString());
 
-		logger.info("PSController create Empty PS");
-		return psService.createEmptyPS(ps.getUserId());
+        logger.info("PSController create Empty PS");
+        return psService.createEmptyPS(ps.getUserId());
 
 
 		/*if(ps.getStatus() == null) {
@@ -37,7 +37,7 @@ public class PSController {
 		} else {
 			logger.info("\n\n\n\n\n\n\n\n\n\nPSController save obj: " + ps.items + ", to str: " + ps.toString());
 			*//*for (Ref item : ps.items) {
-			System.out.println(item);
+            System.out.println(item);
 			}
 			logger.info("PSController save obj: " + ps.items + ", to str: " + ps.toString());
 			return null;*//*
@@ -45,7 +45,7 @@ public class PSController {
 			return null;
 		}*/
 
-	}
+    }
 
 
 	/*@RequestMapping(
@@ -62,35 +62,34 @@ public class PSController {
 	}*/
 
 
+    @RequestMapping(
+            method = RequestMethod.GET,
+            headers = "Accept=application/json",
+            produces = "application/json"
+    )
+    public List get() {
+        return psService.get();
+    }
 
-	@RequestMapping(
-			method = RequestMethod.GET,
-			headers="Accept=application/json",
-			produces="application/json"
-	)
-	public List get() {
-		return psService.get();
-	}
+    @RequestMapping(
+            value = "{id}",
+            method = RequestMethod.GET,
+            headers = "Accept=application/json",
+            produces = "application/json"
+    )
+    public PS getById(@PathVariable String id) {
 
-	@RequestMapping(
-			value="{id}",
-			method = RequestMethod.GET,
-			headers="Accept=application/json",
-			produces="application/json"
-	)
-	public PS getById(@PathVariable String id) {
+        return psService.getById(id);
+    }
 
-		return psService.getById(id);
-	}
-
-	@RequestMapping(
-			value="{id}",
-			method = RequestMethod.PUT,
-			headers="Accept=application/json",
-			produces="application/json"
-	)
-	public PS update (@PathVariable String id, @RequestBody PS ps) {
-		//logger.info("\nPSController update obj: " + ps.newItem.getId() + ", to str: " + ps.toString());
+    @RequestMapping(
+            value = "{id}",
+            method = RequestMethod.PUT,
+            headers = "Accept=application/json",
+            produces = "application/json"
+    )
+    public PS update(@PathVariable String id, @RequestBody PS ps) {
+        //logger.info("\nPSController update obj: " + ps.newItem.getId() + ", to str: " + ps.toString());
 
 	/*	Item thisItem = new Item();
 		thisItem.setId(ps.newItem.getId());
@@ -104,18 +103,15 @@ public class PSController {
 
 		logger.info("thisItem :" + thisItem);*/
 
-		psService.save(ps);
+        psService.save(ps);
 
-		return ps;
+        return ps;
 		/*Ref refItem = Ref.create(thisItem);
 		ps.setNewItem(null);
 		ps.items.add(refItem);
 		//ps.setNewItem(null);
 		return psService.save(ps);*/
-	}
-
-
-
+    }
 
 
 }

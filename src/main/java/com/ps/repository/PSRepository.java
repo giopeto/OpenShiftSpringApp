@@ -9,5 +9,6 @@ import java.util.List;
 @Repository
 public interface PSRepository extends MongoRepository<PS, String> {
     PS getById(String userId);
+
     List<PS> getByUserId(String userId);
 }
