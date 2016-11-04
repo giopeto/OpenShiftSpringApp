@@ -1,18 +1,12 @@
 package com.items.service;
 
-
-
-import com.groups.repository.GroupRepository;
 import com.items.domain.Item;
-
 import com.items.repository.ItemsRepository;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Date;
-import java.util.Map;
 
 @Service
 public class ItemServiceImpl implements ItemService{

@@ -1,16 +1,17 @@
+<section ng-controller="psCtrl as vm">
+    <div class="container wow fadeInUp">
+        <h2>PS ADD EDIT HTML</h2>
+        <div ng-repeat="row in vm.obj.items">
+            <h2>
+                {{row.name}}
+                <button type="button" class="btn btn-danger pull-right" ng-click="vm.removeItem($index)"><i class="ion-trash-a"></i> Remove</button>
 
-<div ng-controller="psCtrl as vm"  class="container wow fadeInUp">
-    <h1>PS ADD EDIT HTML</h1>
-    <div ng-repeat="row in vm.obj.items">
-        <h2>
-            {{row.name}}
-            <button type="button" class="btn btn-danger pull-right" ng-click="vm.removeItem($index)"><i class="ion-trash-a"></i> Remove</button>
+            </h2>
+            <p>{{row.shortDescription}}</p>
+            <hr/>
+        </div>
 
-        </h2>
-        <p>{{row.shortDescription}}</p>
-        <hr/>
+
+        <pre>{{vm.obj | json}}</pre>
     </div>
-
-
-    <!--<pre>{{vm.obj | json}}</pre>-->
-</div>
+</section>

@@ -2,7 +2,7 @@
 
 /* Account Controller */
 
-ngApp.lazy.controller('accountsCtrl', function($scope, $log, $location, $http, AccountFactory, localStorageService) {
+ngApp.lazy.controller('accountsCtrl', function($scope, $log, $location, $http, AccountFactory, localStorageService, PSFactory) {
 	var vm = this;
 	vm.isLoading = false;
 	vm.showSignIn = 1;
@@ -33,6 +33,12 @@ ngApp.lazy.controller('accountsCtrl', function($scope, $log, $location, $http, A
 			$scope.main.user = data;
 			if (data.id) {
 				localStorageService.set("user", data);
+				PSFactory.save({userId: $scope.main.user.id}, function (data) {
+					localStorageService.set("psId", data.id);
+					angular.copy(data, $scope.main.ps);
+				}, function (error) {
+					$log.log("Error: ", error);
+				});
 			} else {
 				localStorageService.remove("user");
 				$scope.main.user = {};

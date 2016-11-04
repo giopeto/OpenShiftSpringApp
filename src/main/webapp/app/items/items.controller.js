@@ -2,7 +2,7 @@
 
 /* Items Controller */
 
-ngApp.lazy.controller('itemsCtrl', function($rootScope, $scope, $log, $routeParams, $location, $http, ItemFactory, GroupFactory, PSFactory, localStorageService, UserFactory) {
+ngApp.lazy.controller('itemsCtrl', function($rootScope, $scope, $log, $routeParams, $location, $http, ItemFactory, GroupFactory, PSFactory, localStorageService) {
 	var vm = this;
 
 	vm.isLoading = false;
@@ -117,12 +117,20 @@ ngApp.lazy.controller('itemsCtrl', function($rootScope, $scope, $log, $routePara
 
 	function addToBasket (args) {
 		changeLoadingState();
+		$log.log (args);
 
-		args.quantity = 1;
-		$scope.main.ps.items.push(args);
+		if ($scope.main.ps.quantity[args.id]) {
+			$scope.main.ps.quantity[args.id] += 1;
+		} else {
+			$scope.main.ps.quantity[args.id] = 1;
+			$scope.main.ps.items.push(args);
+		}
+
+
+
 		PSFactory.update($scope.main.ps, function () {
 			changeLoadingState();
-			alert ("Success")
+			$log.log ("Success");
 		}, function (error) {
 			$log.log("Error: ", error);
 			changeLoadingState();
@@ -130,13 +138,13 @@ ngApp.lazy.controller('itemsCtrl', function($rootScope, $scope, $log, $routePara
 
 	};
 
-	function getAllUsers () {
+	/*function getAllUsers () {
 		vm.allUsers = UserFactory.query().$promise.then(function(data){
 			data.forEach(function (v) {
 				vm.allUsersAsHash[v.id] = v;
 			});
 		})
-	}
+	}*/
 
 	function addComment (args) {
 		//args.row.comments = [];
@@ -167,7 +175,7 @@ ngApp.lazy.controller('itemsCtrl', function($rootScope, $scope, $log, $routePara
 			$log.log ("Error: ", error);
 			changeLoadingState();
 		});
-		getAllUsers();
+		//getAllUsers();
 	} else if ($routeParams.groupId){
 		changeLoadingState();
 		$http.get('items/getByGroupId/'+$routeParams.groupId, {

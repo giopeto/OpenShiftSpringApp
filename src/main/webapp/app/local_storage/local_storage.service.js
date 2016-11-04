@@ -28,7 +28,6 @@ ngApp.service('localStorageService', function($log) {
 
 	this.remove = function(key) {
 		if(this.localStorageCheck()) {
-			$log.log ("Remove");
 			localStorage.removeItem(key);
 		}
 	}

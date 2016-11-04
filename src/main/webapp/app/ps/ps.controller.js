@@ -31,8 +31,8 @@ ngApp.lazy.controller('psCtrl', function($scope, $log, $routeParams, $location, 
 	};
 
 	$log.log($routeParams);
-	if ($routeParams.id > 0) {
-		vm.obj = PSFactory.query({id: $routeParams.id})
+	if ($routeParams.id) {
+		vm.obj = PSFactory.query({id: $routeParams.id});
 	} else {
 		//get();
 	}

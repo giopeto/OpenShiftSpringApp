@@ -352,3 +352,129 @@ img::-moz-selection {
 	float: left;
 	left: -5px;
 }
+
+
+
+/*Login css*/
+
+.account-form {
+  /***** Top content *****/
+}
+.account-form button.btn {
+  height: 50px;
+  margin: 0;
+  padding: 0 20px;
+  vertical-align: middle;
+  background: #de995e;
+  border: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 50px;
+  color: #fff;
+  border-radius: 4px;
+  text-shadow: none;
+  box-shadow: none;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.account-form button.btn:hover {
+  opacity: 0.6;
+  color: #fff;
+}
+.account-form button.btn:active {
+  outline: 0;
+  opacity: 0.6;
+  color: #fff;
+  box-shadow: none;
+}
+.account-form button.btn:focus {
+  outline: 0;
+  opacity: 0.6;
+  background: #de995e;
+  color: #fff;
+}
+.account-form button.btn:active:focus, .account-form button.btn.active:focus {
+  outline: 0;
+  opacity: 0.6;
+  background: #de995e;
+  color: #fff;
+}
+.account-form .btn-link-2 {
+  display: inline-block;
+  height: 50px;
+  margin: 5px;
+  padding: 15px 20px 0 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #fff;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 16px;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.account-form .top-content .description p {
+  opacity: 0.8;
+}
+.account-form .top-content .description a {
+  color: #fff;
+}
+.account-form .top-content .description a:hover,
+.account-form .top-content .description a:focus {
+  border-bottom: 1px dotted #fff;
+}
+.account-form .form-box {
+  margin-top: 35px;
+}
+.account-form .form-top {
+  overflow: hidden;
+  padding: 0 25px 15px 25px;
+  background: #fff;
+  border-radius: 4px 4px 0 0;
+  text-align: left;
+}
+.account-form .form-top-left {
+  float: left;
+  width: 75%;
+  padding-top: 25px;
+}
+.account-form .form-top-left h3 {
+  margin-top: 0;
+}
+.account-form .form-top-right {
+  float: left;
+  width: 25%;
+  padding-top: 5px;
+  font-size: 66px;
+  color: #ddd;
+  line-height: 100px;
+  text-align: right;
+}
+.account-form .form-bottom {
+  padding: 25px 25px 30px 25px;
+  background: #eee;
+  border-radius: 0 0 4px 4px;
+  text-align: left;
+}
+.account-form .form-bottom form textarea {
+  height: 100px;
+}
+.account-form .form-bottom form button.btn {
+  width: 100%;
+}
+.account-form .form-bottom form .input-error {
+  border-color: #de995e;
+}
+.account-form .social-login {
+  margin-top: 35px;
+}
+.account-form .social-login h3 {
+  color: black;
+}
+.account-form .social-login-buttons {
+  margin-top: 25px;
+}
+/*Login css end*/
+
+

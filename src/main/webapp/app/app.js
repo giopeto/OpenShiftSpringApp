@@ -6,8 +6,15 @@ ngApp.controller('mainCtrl', function($scope, $http, $log, localStorageService, 
 	$scope.main = {
 		user: localStorageService.get("user"),
 		allGroups:  GroupFactory.query(),
-		//ps: PSFactory.query({id: localStorageService.get("psId")}),
+		ps: {
+			items: [],
+			quantity: {}
+		},
 	};
+	if (localStorageService.get("psId")) {
+		$scope.main.ps = PSFactory.query({id: localStorageService.get("psId")});
+	}
+	//ps: PSFactory.query({id: localStorageService.get("psId")}),
 
 	$scope.logOut = function () {
 		$http.get('/accounts/logOut').success(function(data) {
