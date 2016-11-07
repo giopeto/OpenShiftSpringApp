@@ -1,8 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+/*@import url(https://fonts.googleapis.com/css?family=Montserrat:700);*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,300,500,700');
 
-/
-/
-"http://radorado.me/zashto_imame_tozi_glad_za_programisti/cool font"
+/*"http://radorado.me/zashto_imame_tozi_glad_za_programisti/cool font"*/
 
 html,
 body {
@@ -11,7 +10,7 @@ body {
 }
 
 body {
-    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     color: #001A33;
     webkit-tap-highlight-color: #222;
     top: 0;
@@ -36,12 +35,12 @@ hr.light {
 }
 
 hr.primary {
-    border-color: #007FFF;
+    border-color: #8a6d3b;
     opacity: 1;
 }
 
 a {
-    color: #007FFF;
+    color: #8a6d3b;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -74,7 +73,7 @@ p {
 }
 
 .bg-primary {
-    background-color: #007FFF;
+    background-color: #8a6d3b;
 }
 
 .bg-alt {
@@ -99,7 +98,7 @@ p {
 }
 
 .text-primary {
-    color: #007FFF;
+    color: #8a6d3b;
 }
 
 section {
@@ -113,12 +112,25 @@ aside {
 footer {
     padding: 45px;
     padding-top: 40px;
-    background-color: #e0e0e3;
+    background-color: #8a6d3b;
+}
+
+footer a {
+    color: #ffffff;
 }
 
 footer h4, footer h6 {
     color: #fff;
 }
+
+/*footer{
+    height: 100px;
+    width:100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}*/
+
 
 .navbar-default {
     border-color: rgba(35, 35, 35, .05);
@@ -136,7 +148,7 @@ footer h4, footer h6 {
 
 .navbar-brand:hover,
 .navbar-brand:focus {
-    color: #007FFF;
+    color: #a5fdff;
 }
 
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
@@ -156,12 +168,12 @@ footer h4, footer h6 {
 
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus:hover {
-    color: #007FFF;
+    color: #8a6d3b;
 }
 
 .navbar-default .nav .nav-link.active,
 .navbar-default .nav .nav-link.active:focus {
-    color: #007FFF !important;
+    color: #8a6d3b !important;
     background-color: transparent;
 }
 
@@ -216,6 +228,8 @@ footer h4, footer h6 {
 
 }
 
+
+
 header {
     position: relative;
     min-height: auto;
@@ -224,6 +238,20 @@ header {
     width: 100%;
     background-color: #fff;
 }
+
+.header {
+//border: 5px dashed green;
+    background-image: url("https://static.pexels.com/photos/106567/pexels-photo-106567.jpeg");
+    background-color:  #fff;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    padding: 0px;
+    opacity: 0.8;
+}
+
 
 header .header-content {
     position: relative;
@@ -301,11 +329,11 @@ textarea {
 
 .btn.btn-primary {
     background-color: transparent;
-    border: 1px solid #007FFF;
+    border: 1px solid #8a6d3b;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
-    color: #007FFF;
+    color: #8a6d3b;
 }
 
 .btn.btn-primary:hover {
@@ -313,12 +341,12 @@ textarea {
 }
 
 .btn-primary-outline {
-    border-color: #007FFF;
-    color: #007FFF;
+    border-color: #8a6d3b;
+    color: #8a6d3b;
 }
 
 .btn-primary-outline:hover {
-    background-color: #007FFF;
+    background-color: #8a6d3b;
 }
 
 .btn-xl {
@@ -348,6 +376,15 @@ img::-moz-selection {
     background: 0 0;
 }
 
+.card img {
+    opacity: 0.7;
+    filter: alpha(opacity=70); /* For IE8 and earlier */
+}
+.card img:hover  {
+    opacity: 1;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
 .profile-image {
     width: 50px;
     height: 50px;
@@ -359,6 +396,9 @@ img::-moz-selection {
     left: -5px;
 }
 
+.bold {
+    font-weight: bold;
+}
 /*Login css*/
 
 .account-form {

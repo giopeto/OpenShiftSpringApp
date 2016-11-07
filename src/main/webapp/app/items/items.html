@@ -12,7 +12,7 @@
                 <tr ng-repeat="row in vm.allObj">
                     <td>{{row.name}}</td>
                     <td>
-                        <button type="button" class="btn btn-success btn-sm" ng-click="vm.addEdit(row)"><i
+                        <button type="button" class="btn btn-warning btn-sm" ng-click="vm.addEdit(row)"><i
                                 class="ion-edit"></i>&nbsp;Edit
                         </button>
                     </td>
@@ -25,7 +25,7 @@
                 </tbody>
             </table>
         </div>
-        <button type="submit" class="btn btn-success btn-lg btn-block" ng-click="vm.addEdit({})"><span
+        <button type="submit" class="btn btn-warning btn-lg btn-block" ng-click="vm.addEdit({})"><span
                 class="glyphicon glyphicon-plus"></span>&nbsp;Add new
         </button>
     </div>
