@@ -1,10 +1,47 @@
 <section ng-controller="itemsCtrl as vm">
 
     <div class="container wow fadeInUp">
-        <h2>{{vm.obj.name}}</h2>
 
+        <div class="row">
+            <div class="col-lg-8">
+                <img class="img-fluid" src="files/{{vm.obj.fileIds[0]}}" alt="Item image">
+            </div>
+            <div class="col-lg-4">
+                <h2>{{vm.obj.name}}</h2>
+                <h3>{{vm.obj.shortDescription}}</h3>
+                <p class="lead">
+                    {{vm.obj.description}}
+                </p>
+            </div>
+        </div>
+        <div class="row" ng-if="main.user.id">
+            <button type="button" class="btn btn-warning" ng-click="vm.addToBasket(vm.obj)"><span
+                    class="glyphicon glyphicon-pencil"></span> Add to basket
+            </button>
+            <div class="form-group">
+                <label for="comment">Comment: </label>
+                <textarea ng-model="vm.obj.comment" class="form-control" rows="5" id="comment"></textarea>
+                <button type="button" class="btn btn-warning"
+                        ng-click="vm.addComment({row: vm.obj, comment: vm.obj.comment})"><span
+                        class="glyphicon glyphicon-pencil"></span> Add comment
+                </button>
+            </div>
+        </div>
+
+        <div class="row" ng-repeat="comment in vm.obj.comments">
+            <img src="{{vm.allUsersAsHash[comment.userId].picture}}" class="profile-image img-circle img-responsive"/>{{vm.allUsersAsHash[comment.userId].given_name}}
+            {{vm.allUsersAsHash[comment.userId].family_name}}:<br> {{comment.comment}}
+            <br><br><br>
+        </div>
+
+    </div>
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="container wow fadeInUp">
+        <h2 class="text-center">{{vm.obj.name}}</h2>
         <h3>{{vm.obj.shortDescription}}</h3>
-        <img class="card-img-top img-fluid col-lg-6" src="files/{{vm.obj.fileIds[0]}}" alt="Item image">
+        <img class="img-fluid" src="files/{{vm.obj.fileIds[0]}}" alt="Item image">
         <p class="lead">
             {{vm.obj.description}}
         </p>
@@ -47,13 +84,13 @@
         <br><br>
 
         <div ng-if="main.user.id">
-            <button type="button" class="btn btn-success" ng-click="vm.addToBasket(vm.obj)"><span
+            <button type="button" class="btn btn-warning" ng-click="vm.addToBasket(vm.obj)"><span
                     class="glyphicon glyphicon-pencil"></span> Add to basket
             </button>
             <div class="form-group">
                 <label for="comment">Comment: </label>
                 <textarea ng-model="vm.obj.comment" class="form-control" rows="5" id="comment"></textarea>
-                <button type="button" class="btn btn-success"
+                <button type="button" class="btn btn-warning"
                         ng-click="vm.addComment({row: vm.obj, comment: vm.obj.comment})"><span
                         class="glyphicon glyphicon-pencil"></span> Add comment
                 </button>
