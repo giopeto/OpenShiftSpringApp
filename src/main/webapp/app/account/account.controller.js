@@ -15,7 +15,6 @@ ngApp.lazy.controller('accountsCtrl', function ($scope, $log, $location, $http, 
             authenticate();
         }, function (error) {
             $log.log("Error: ", error);
-
         });
 
     }

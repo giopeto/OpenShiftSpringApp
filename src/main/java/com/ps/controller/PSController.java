@@ -14,8 +14,6 @@ import java.util.List;
 @RequestMapping("/ps")
 public class PSController {
 
-    private final Logger logger = LoggerFactory.getLogger(PSController.class);
-
     @Autowired
     private PSService psService;
 
@@ -24,27 +22,8 @@ public class PSController {
             headers = "Accept=application/json",
             produces = "application/json"
     )
-    public PS save(@RequestBody PS ps) {
-
-        System.out.println(ps.toString());
-
-        logger.info("PSController create Empty PS");
+    public PS createEmptyPS(@RequestBody PS ps) {
         return psService.createEmptyPS(ps.getUserId());
-
-
-		/*if(ps.getStatus() == null) {
-
-		} else {
-			logger.info("\n\n\n\n\n\n\n\n\n\nPSController save obj: " + ps.items + ", to str: " + ps.toString());
-			*//*for (Ref item : ps.items) {
-            System.out.println(item);
-			}
-			logger.info("PSController save obj: " + ps.items + ", to str: " + ps.toString());
-			return null;*//*
-			//return psService.save(ps);
-			return null;
-		}*/
-
     }
 
 
@@ -78,7 +57,6 @@ public class PSController {
             produces = "application/json"
     )
     public PS getById(@PathVariable String id) {
-
         return psService.getById(id);
     }
 
@@ -89,28 +67,8 @@ public class PSController {
             produces = "application/json"
     )
     public PS update(@PathVariable String id, @RequestBody PS ps) {
-        //logger.info("\nPSController update obj: " + ps.newItem.getId() + ", to str: " + ps.toString());
-
-	/*	Item thisItem = new Item();
-		thisItem.setId(ps.newItem.getId());
-		//ps.setNewItem(null);
-
-
-
-		Ref refItem = Ref.create(thisItem);
-		ps.items.add(refItem);
-		logger.info("ps :" + ps.toString());
-
-		logger.info("thisItem :" + thisItem);*/
-
         psService.save(ps);
-
         return ps;
-		/*Ref refItem = Ref.create(thisItem);
-		ps.setNewItem(null);
-		ps.items.add(refItem);
-		//ps.setNewItem(null);
-		return psService.save(ps);*/
     }
 
 
