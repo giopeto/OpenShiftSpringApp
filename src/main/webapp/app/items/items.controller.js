@@ -26,6 +26,8 @@ ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routePar
     vm.addToBasket = addToBasket;
     vm.addComment = addComment;
     vm.removeFile = removeFile;
+    vm.changeQuantity = changeQuantity;
+    vm.swapImage = swapImage;
 
     var skipGoBack = 0;
 
@@ -117,12 +119,12 @@ ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routePar
 
     function addToBasket(args) {
         changeLoadingState();
-        $log.log(args);
+        $log.log(args.quantity);
 
         if ($scope.main.ps.quantity[args.id]) {
-            $scope.main.ps.quantity[args.id] += 1;
+            $scope.main.ps.quantity[args.id] += args.quantity;
         } else {
-            $scope.main.ps.quantity[args.id] = 1;
+            $scope.main.ps.quantity[args.id] = args.quantity;
             $scope.main.ps.items.push(args);
         }
 
@@ -157,6 +159,25 @@ ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routePar
         update();
     };
 
+    function changeQuantity(args) {
+        $log.log(args);
+        if(args.tp==="increase"){
+            args.quantity++;
+        }else{
+            args.quantity--;
+        }
+        if(args.quantity>0) {
+            vm.obj.quantity = args.quantity;
+        }
+    }
+
+    function swapImage(args){
+        $log.log(args);
+        let tempId = vm.obj.fileIds[0];
+        vm.obj.fileIds[0]=args.id;
+        args.id = tempId;
+    }
+
     $rootScope.$on('filesChanged', function (args, data) {
 
         $log.log(data);
@@ -168,8 +189,8 @@ ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routePar
         changeLoadingState();
         vm.obj = ItemFactory.get({id: $routeParams.id}, function (data) {
             changeLoadingState();
+            vm.obj.quantity = 1;
             console.log(vm.obj);
-
         }, function (error) {
             $log.log("Error: ", error);
             changeLoadingState();

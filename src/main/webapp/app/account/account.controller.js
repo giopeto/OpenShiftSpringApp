@@ -4,6 +4,7 @@
 
 ngApp.lazy.controller('accountsCtrl', function ($scope, $log, $location, $http, AccountFactory, localStorageService, PSFactory) {
     var vm = this;
+    vm.message = "";
     vm.isLoading = false;
     vm.showSignIn = 1;
     vm.signup = signup;
@@ -41,6 +42,7 @@ ngApp.lazy.controller('accountsCtrl', function ($scope, $log, $location, $http, 
             } else {
                 localStorageService.remove("user");
                 $scope.main.user = {};
+                vm.message = "Incorrect email or password";
             }
             return data;
         }).error(function (error) {

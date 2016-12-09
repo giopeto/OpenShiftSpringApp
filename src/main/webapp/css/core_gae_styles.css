@@ -545,4 +545,8 @@ img::-moz-selection {
 
 /*Login css end*/
 
+.show-pointer {
+    cursor: pointer;
+}
+
 
