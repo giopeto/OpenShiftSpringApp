@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.*;
 
 
-@Document
+@Document(collection = "ps")
 public class PS {
 
     @Id

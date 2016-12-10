@@ -34,9 +34,7 @@ public class FilesController {
             produces = "application/json"
     )
     public ResponseEntity<InputStreamResource> getById(@PathVariable String fileId) {
-        //System.out.println("ID: " + fileId);
         GridFSDBFile gridFsFile = fs.getById(fileId);
-
         return ResponseEntity.ok()
                 .contentLength(gridFsFile.getLength())
                 .contentType(MediaType.parseMediaType(gridFsFile.getContentType()))

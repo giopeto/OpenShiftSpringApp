@@ -36,9 +36,10 @@
 
                             <div class="form-group">
                                 <div class="col-sm-10">
-                                    <input type="file" file-model="myFile" class="btn btn-danger active btn-sm"/>
-                                    <button ng-click="vm.uploadFile()" class="btn btn-danger active btn-lg">Upload
-                                        file
+                                    <label class="btn btn-default btn-file">
+                                        Browse <input type="file" file-model="myFile" style="display: none;">
+                                    </label>
+                                    <button ng-click="vm.uploadFile()" class="btn btn-warning">Upload file
                                     </button>
                                 </div>
                             </div>

@@ -1,7 +1,34 @@
 <section id="one" ng-controller="itemsCtrl as vm">
     <div class="container wow fadeInUp">
 
-        <div class="row">
+
+            <div class="row">
+                <div class="col-sm-6" ng-repeat="row in vm.allObj">
+                    <div class="card">
+                        <a class="img-card" ng-click="vm.info({id: row.id})" href="">
+                            <img src="files/{{row.fileIds[0]}}" />
+                        </a>
+                        <br />
+                        <div class="card-content">
+                            <h4 class="card-title">
+                                <a href="http://www.fostrap.com/">
+                                    {{row.name}}
+                                </a>
+                            </h4>
+                            <div class="">
+                                {{row.shortDescription}}
+                            </div>
+                        </div>
+                        <div class="card-read-more">
+                             <button type="button" class="btn btn-block btn-warning" ng-click="vm.info({id: row.id})">Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        <!--<div class="row">
             <div class="col-sm-6" ng-repeat="row in vm.allObj">
                 <div class="card card-block text-xs-center">
                     <div class="card-block">
@@ -15,14 +42,14 @@
                         <button type="button" class="btn btn-warning" ng-click="vm.info({id: row.id})"><span
                                 class="glyphicon glyphicon-pencil"></span> More Info
                         </button>
-                        <!--<button type="button" class="btn btn-warning" ng-click="vm.addToBasket(row)"><span
+                        <button type="button" class="btn btn-warning" ng-click="vm.addToBasket(row)"><span
                                 class="glyphicon glyphicon-pencil"></span> Add to basket
-                        </button>-->
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <!--<pre>
         {{vm.allObj | json}}
     </pre>-->
