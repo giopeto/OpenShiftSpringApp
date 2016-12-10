@@ -26,9 +26,7 @@ public class AccountController {
             headers = "Accept=application/json",
             produces = "application/json"
     )
-    public Account save(@RequestBody Account a) {
-        System.out.println("AccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccount" + a.toString());return accountService.save(a);
-    }
+    public Account save(@RequestBody Account a) {return accountService.save(a);}
 
     /*@Secured({"ROLE_USER", "ROLE_ADMIN"})*/
     @RequestMapping(
