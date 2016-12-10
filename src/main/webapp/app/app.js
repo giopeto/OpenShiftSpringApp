@@ -17,13 +17,15 @@ ngApp.controller('mainCtrl', function ($scope, $http, $log, localStorageService,
     //ps: PSFactory.query({id: localStorageService.get("psId")}),
 
     $scope.logOut = function () {
-        $http.get('/accounts/logOut').success(function (data) {
-            localStorageService.remove("user");
-            $scope.main.user = {};
-        }).error(function (error) {
-            $log.log("ERROR: ", error);
-            $scope.main.user = {};
-        });
+        if(confirm("Are you sure?")) {
+            $http.get('/accounts/logOut').success(function (data) {
+                localStorageService.remove("user");
+                $scope.main.user = {};
+            }).error(function (error) {
+                $log.log("ERROR: ", error);
+                $scope.main.user = {};
+            });
+        }
     };
 
 
@@ -238,6 +240,27 @@ ngApp.config(function ($controllerProvider, $compileProvider, $filterProvider, $
                 return deferred.promise;
             }]
         }
+    }).when('/account_info/:id', {
+        templateUrl: 'app/account/account_info.html',
+        resolve: {
+            load: ['$q', '$rootScope', function ($q, $rootScope) {
+                var deferred = $q.defer();
+                require([
+                    'app/account/account.service.js',
+                    'app/account/account.controller.js',
+                    'app/files/files.directive.js',
+                    'app/files/files.controller.js'
+                ], function () {
+                    $rootScope.$apply(function () {
+                        deferred.resolve();
+                    }, function (err) {
+                        console.log('RouteProvider resolve error: ', err);
+                    });
+                });
+                return deferred.promise;
+            }]
+        }
+
     }).when('/home', {
         templateUrl: 'app/home/home.html'
 

@@ -1,20 +1,28 @@
 <section ng-controller="psCtrl as vm">
     <div class="container wow fadeInUp">
-        <h2>PS ADD EDIT HTML</h2>
-        <div ng-repeat="row in vm.obj.items">
-            <h2>
-                {{row.name}}
-                <button type="button" class="btn btn-danger pull-right"
-                        ng-click="vm.removeItem({id: row.id, index: $index})"><i class="ion-trash-a"></i> Remove
-                </button>
+        <h2>Basket</h2>
 
-            </h2>
-            <p>{{row.shortDescription}}</p>
-            <p>Quantity: {{vm.obj.quantity[row.id]}}</p>
-            <hr/>
+
+
+        <div class="card-group">
+            <div class="card col-sm-6" ng-repeat="row in vm.obj.items">
+                <img class="card-img-top img-fluid" src="files/{{row.fileIds[0]}}" alt="Card image cap">
+                <div class="card-block">
+                    <h4 class="card-title">{{row.name}}</h4>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <span class="input-group col-xs-5">
+                    <span class="input-group-addon show-pointer" ng-click="vm.changeQuantity({quantity: vm.obj.quantity, tp: 'decrease'})">&nbsp;-</span>
+                    <input type="text" class="form-control text-center" ng-model="vm.obj.quantity[row.id]" />
+                    <span class="input-group-addon show-pointer" ng-click="vm.changeQuantity({quantity: vm.obj.quantity, tp: 'increase'})">+</span>
+                </span>
+                    <button type="button" class="btn btn-danger pull-right"
+                            ng-click="vm.removeItem({id: row.id, index: $index})"><i class="ion-trash-a"></i> Remove
+                    </button>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
         </div>
-
-
-        <pre>{{vm.obj | json}}</pre>
+        <!--<pre>{{vm.obj | json}}</pre>-->
     </div>
 </section>
+

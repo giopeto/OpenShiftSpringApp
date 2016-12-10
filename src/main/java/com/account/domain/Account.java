@@ -12,6 +12,7 @@ public class Account {
     private String userName;
     private String password;
     private String role = "ROLE_USER";
+    private String fileId;
 
     public Account() {
     }
@@ -23,13 +24,14 @@ public class Account {
     }
 
     public Account(String id, String userName,
-                   String password, String email, String role) {
+                   String password, String email, String role, String fileId) {
         super();
         this.id = id;
         this.email = email;
         this.userName = userName;
         this.password = password;
         this.role = role;
+        this.fileId = fileId;
     }
 
     public String getId() {
@@ -70,5 +72,13 @@ public class Account {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getFileId() {
+        return fileId;
+    }
+
+    public void setFileId(String fileId) {
+        this.fileId = fileId;
     }
 }

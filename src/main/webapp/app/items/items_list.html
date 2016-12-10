@@ -1,11 +1,5 @@
 <section id="one" ng-controller="itemsCtrl as vm">
     <div class="container wow fadeInUp">
-        <h2>Cards</h2>
-        <p class="lead">
-            What you notice first in <a href="http://v4-alpha.getbootstrap.com/">Bootstrap 4</a> is that <code>.panel</code> and <code>.well</code> have been replaced by the <code>.card</code>. This makes a lot of sense as "cards" are one of the more well known trends in responsive design.
-            The <a href="">Bootstrap 4 Cards</a> can be singular, grouped together (as shown) or <a href="">equal height</a>. There are many different layout and content options.
-        </p>
-
 
         <div class="row">
             <div class="col-sm-6" ng-repeat="row in vm.allObj">
@@ -18,18 +12,18 @@
                         <p class="card-text">{{row.shortDescription}}</p>
                     </div>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-secondary" ng-click="vm.info({id: row.id})"><span
+                        <button type="button" class="btn btn-warning" ng-click="vm.info({id: row.id})"><span
                                 class="glyphicon glyphicon-pencil"></span> More Info
                         </button>
-                        <button type="button" class="btn btn-warning" ng-click="vm.addToBasket(row)"><span
+                        <!--<button type="button" class="btn btn-warning" ng-click="vm.addToBasket(row)"><span
                                 class="glyphicon glyphicon-pencil"></span> Add to basket
-                        </button>
+                        </button>-->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <pre>
+    <!--<pre>
         {{vm.allObj | json}}
-    </pre>
+    </pre>-->
 </section>

@@ -27,7 +27,7 @@ public class AccountController {
             produces = "application/json"
     )
     public Account save(@RequestBody Account a) {
-        return accountService.save(a);
+        System.out.println("AccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccountAccount" + a.toString());return accountService.save(a);
     }
 
     /*@Secured({"ROLE_USER", "ROLE_ADMIN"})*/
@@ -61,6 +61,17 @@ public class AccountController {
     @Secured("ROLE_USER")
     public Account account(@PathVariable("id") String id) {
         return accountRepository.findOne(id);
+    }
+
+
+    @RequestMapping(
+            value = "{id}",
+            method = RequestMethod.PUT,
+            headers = "Accept=application/json",
+            produces = "application/json"
+    )
+    public void update(@PathVariable String id, @RequestBody Account item) {
+        accountRepository.save(item);
     }
 
 

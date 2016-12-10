@@ -1,0 +1,43 @@
+<section ng-controller="accountsCtrl as vm">
+    <div class="container wow fadeInUp account-form">
+        <div class="row">
+
+            <div class="col-sm-6 ">
+                <div class="center-block">
+                    <div class="card card-block text-xs-center">
+                        <div class="card-block">
+                            <h4 class="card-title">{{main.user.email}}</h4>
+                        </div>
+                        <img class="card-img-top img-fluid show-pointer" src="files/{{main.user.fileId}}" alt="User image" ng-if="main.user.fileId">
+                        <div class="card-block">
+                            <p class="card-text">{{row.shortDescription}}</p>
+                        </div>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary" ng-click="vm.snowFileUploader=1"><span
+                                    class="glyphicon glyphicon-pencil"></span> Change/Add image
+                            </button>
+                            <!--<button type="button" class="btn btn-warning" ng-click="vm.addToBasket(row)"><span
+                                    class="glyphicon glyphicon-pencil"></span> Add to basket
+                            </button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-controller="filesCtrl as vm" ng-if="vm.snowFileUploader">
+                <form enctype="multipart/form-data" class="form-horizontal">
+
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <input type="file" file-model="myFile" class="btn btn-danger active btn-sm"/>
+                            <button ng-click="vm.uploadFile()" class="btn btn-danger active btn-lg">Upload
+                                file
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -152,7 +152,13 @@ ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routePar
         if (!args.comment) {
             return;
         }
-        args.row.comments.unshift({userId: $scope.main.user.id, comment: args.comment});
+
+        args.row.comments.unshift({
+			userId: $scope.main.user.id,
+			comment: args.comment,
+			userEmail: $scope.main.user.email,
+			userFileId: $scope.main.user.fileId
+		});
         vm.obj = args.row;
         skipGoBack = 1;
         args.row.comment = '';
@@ -173,15 +179,12 @@ ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routePar
 
     function swapImage(args){
         $log.log(args);
-        let tempId = vm.obj.fileIds[0];
+        var tempId = vm.obj.fileIds[0];
         vm.obj.fileIds[0]=args.id;
         args.id = tempId;
     }
 
     $rootScope.$on('filesChanged', function (args, data) {
-
-        $log.log(data);
-
         vm.obj.fileIds.push(data.fileId);
     });
 
@@ -190,7 +193,6 @@ ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routePar
         vm.obj = ItemFactory.get({id: $routeParams.id}, function (data) {
             changeLoadingState();
             vm.obj.quantity = 1;
-            console.log(vm.obj);
         }, function (error) {
             $log.log("Error: ", error);
             changeLoadingState();

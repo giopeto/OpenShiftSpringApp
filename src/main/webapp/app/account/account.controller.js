@@ -2,7 +2,7 @@
 
 /* Account Controller */
 
-ngApp.lazy.controller('accountsCtrl', function ($scope, $log, $location, $http, AccountFactory, localStorageService, PSFactory) {
+ngApp.lazy.controller('accountsCtrl', function ($scope, $log, $location, $http, AccountFactory, localStorageService, PSFactory, $rootScope) {
     var vm = this;
     vm.message = "";
     vm.isLoading = false;
@@ -51,4 +51,17 @@ ngApp.lazy.controller('accountsCtrl', function ($scope, $log, $location, $http, 
         });
     }
 
+    $rootScope.$on('filesChanged', function (args, data) {
+       $scope.main.user.fileId = data.fileId;
+
+        AccountFactory.update($scope.main.user, function (data) {
+            localStorageService.set("user", $scope.main.user);
+        }).error(function (error) {
+            $log.log("ERROR signin: ", error);
+        });
+    });
+
+    /*if ($routeParams.id) {
+        $log.log ('ASD');
+    }*/
 });

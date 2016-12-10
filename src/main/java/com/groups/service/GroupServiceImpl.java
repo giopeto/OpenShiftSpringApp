@@ -22,7 +22,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     public List<Group> get() {
-        return repository.findAll();
+        return repository.findAllByOrderByNameAsc();
     }
 
     public Group getById(String id) {
