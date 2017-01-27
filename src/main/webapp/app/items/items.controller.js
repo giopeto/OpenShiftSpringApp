@@ -7,6 +7,7 @@ ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routePar
 
     vm.isLoading = false;
     vm.errorMsg = {};
+    vm.showAlreadyOrderThisItemErr = false;
     vm.obj = {
         fileIds: []
     };
@@ -122,7 +123,8 @@ ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routePar
         $log.log(args.quantity);
 
         if ($scope.main.ps.quantity[args.id]) {
-            $scope.main.ps.quantity[args.id] += args.quantity;
+            //alert ("OLD: " + $scope.main.ps.quantity[args.id] + ", NEW: "+ args.quantity);
+            $scope.main.ps.quantity[args.id] = args.quantity;
         } else {
             $scope.main.ps.quantity[args.id] = args.quantity;
             $scope.main.ps.items.push(args);
@@ -139,16 +141,7 @@ ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routePar
 
     };
 
-    /*function getAllUsers () {
-     vm.allUsers = UserFactory.query().$promise.then(function(data){
-     data.forEach(function (v) {
-     vm.allUsersAsHash[v.id] = v;
-     });
-     })
-     }*/
-
     function addComment(args) {
-        //args.row.comments = [];
         if (!args.comment) {
             return;
         }
@@ -193,6 +186,9 @@ ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routePar
         vm.obj = ItemFactory.get({id: $routeParams.id}, function (data) {
             changeLoadingState();
             vm.obj.quantity = 1;
+            if($scope.main.ps.quantity[$routeParams.id]>0){
+                vm.showAlreadyOrderThisItemErr = true;
+            }
         }, function (error) {
             $log.log("Error: ", error);
             changeLoadingState();

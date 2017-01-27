@@ -11,17 +11,18 @@
                     <br />
                     <div class="card-content">
                         <h4 class="card-title">
-                            <a href="http://www.fostrap.com/">
+
                                 {{row.name}}
-                            </a>
+
                         </h4>
                         <div class="">
                             <p class="clearfix">{{row.shortDescription}}</p>
                             <div class="clearfix center-block">
+
                                 <span class="input-group col-xs-4">
-                                    <span class="input-group-addon show-pointer" ng-click="vm.changeQuantity({quantity: vm.obj.quantity, tp: 'decrease'})">&nbsp;-</span>
+                                    <span class="input-group-addon show-pointer" ng-click="vm.changeQuantity({obj: row, tp: 'decrease'})">&nbsp;-</span>
                                     <input type="text" class="form-control text-center" ng-model="vm.obj.quantity[row.id]" />
-                                    <span class="input-group-addon show-pointer" ng-click="vm.changeQuantity({quantity: vm.obj.quantity, tp: 'increase'})">+</span>
+                                    <span class="input-group-addon show-pointer" ng-click="vm.changeQuantity({obj: row, tp: 'increase'})">+</span>
                                 </span>
                             </div>
                         </div>
@@ -40,7 +41,7 @@
         </div>
 
 
-
+        <pre>{{vm.obj | json}}</pre>
 
 
         <!--<div class="card-group">

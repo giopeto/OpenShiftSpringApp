@@ -28,6 +28,10 @@ ngApp.controller('mainCtrl', function ($scope, $http, $log, localStorageService,
         }
     };
 
+    $scope.$back = function() {
+        window.history.back();
+    };
+
 
 });
 
