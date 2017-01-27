@@ -134,6 +134,7 @@ ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routePar
         PSFactory.update($scope.main.ps, function () {
             changeLoadingState();
             $log.log("Success");
+            $scope.$back();
         }, function (error) {
             $log.log("Error: ", error);
             changeLoadingState();
