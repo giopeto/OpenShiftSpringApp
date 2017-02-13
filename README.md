@@ -18,7 +18,7 @@ Technologies
 ------------
 
 * [AngularJS](http://angularjs.org/)
-* [Bootstrap](http://getbootstrap.com/)
+* [Bootstrap](https://v4-alpha.getbootstrap.com/)
 * [MongoDB](https://www.mongodb.com/)
 * [Spring Framework](http://projects.spring.io/spring-framework/)
 * [Spring Security](http://projects.spring.io/spring-security/)
