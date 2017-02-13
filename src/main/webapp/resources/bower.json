@@ -1,11 +1,11 @@
 {
-  "name": "Gifts",
-  "version": "2.0.0",
-  "homepage": "https://github.com/giopeto/Gifts",
+  "name": "OpenShiftSpringApp",
+  "version": "1.0.0",
+  "homepage": "https://testwildfly10-travelopenshift.rhcloud.com",
   "authors": [
-    "giopeto <giopeto0@yahoo.com>"
+    "George Georgiev <georg3georgiev@gmail.com>"
   ],
-  "description": "Gifts",
+  "description": "OpenShiftSpringApp is a e-shop hosted on red hat openshift",
   "main": "index.html",
   "license": "MIT",
   "ignore": [
