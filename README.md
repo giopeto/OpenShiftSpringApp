@@ -1,17 +1,17 @@
 # OpenShiftSpringApp
 ===========================
 
-E-shop
+Building E-shop.
 
 About
 -----
 
-The projects aim is to demonstrate the Java implementation of a simple REST interface which is used by an AngularJS application. The following topics are covered:
+The projects aim is to demonstrate the Java implementation of a REST interface which is used by an AngularJS application. The following topics are covered:
 
 * A NoSQL database that holds data.
 * A REST service that exposes the data in the database.
 * Authentication and authorization against the REST service.
-* A AngularJS application that allows users to view or edit items, groups entries depending on their role, add items to their basket, and create orders
+* A AngularJS application that allows users to view or edit items, groups entries depending on their role, add items to their basket, and create orders.
 * A responsive design.
 
 Technologies
