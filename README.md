@@ -1,7 +1,7 @@
 # OpenShiftSpringApp
 ===========================
 
-Building E-shop.
+Building E-shop. Live Preview hosted on [Openshift](http://testwildfly10-travelopenshift.rhcloud.com)
 
 About
 -----
