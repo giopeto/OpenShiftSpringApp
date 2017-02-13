@@ -23,3 +23,5 @@ Technologies
 * [Spring Framework](http://projects.spring.io/spring-framework/)
 * [Spring Security](http://projects.spring.io/spring-security/)
 * [Spring Data](http://projects.spring.io/spring-data/)
+* [Maven](https://maven.apache.org/)
+* [Bower](https://bower.io/)
