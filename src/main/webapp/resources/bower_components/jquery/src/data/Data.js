@@ -69,12 +69,12 @@ define([
             if (typeof data === "string") {
                 cache[data] = value;
 
-                // Handle: [ owner, { properties } ] args
+                // Handle: [ owner, { application.properties } ] args
             } else {
                 // Fresh assignments by object are shallow copied
                 if (jQuery.isEmptyObject(cache)) {
                     jQuery.extend(this.cache[unlock], data);
-                    // Otherwise, copy the properties one-by-one to the cache object
+                    // Otherwise, copy the application.properties one-by-one to the cache object
                 } else {
                     for (prop in data) {
                         cache[prop] = data[prop];
@@ -118,7 +118,7 @@ define([
             // [*]When the key is not a string, or both a key and value
             // are specified, set or extend (existing objects) with either:
             //
-            //   1. An object of properties
+            //   1. An object of application.properties
             //   2. A key and value
             //
             this.set(owner, key, value);

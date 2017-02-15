@@ -70,7 +70,7 @@ define([
         var i = extra === ( isBorderBox ? "border" : "content" ) ?
                 // If we already have the right measurement, avoid augmentation
                 4 :
-                // Otherwise initialize for horizontal or vertical properties
+                // Otherwise initialize for horizontal or vertical application.properties
                 name === "width" ? 1 : 0,
 
             val = 0;
@@ -217,7 +217,7 @@ define([
             }
         },
 
-        // Don't automatically add "px" to these possibly-unitless properties
+        // Don't automatically add "px" to these possibly-unitless application.properties
         cssNumber: {
             "columnCount": true,
             "fillOpacity": true,
@@ -233,7 +233,7 @@ define([
             "zoom": true
         },
 
-        // Add in properties whose names you wish to fix before
+        // Add in application.properties whose names you wish to fix before
         // setting or getting the value
         cssProps: {
             "float": "cssFloat"
@@ -273,7 +273,7 @@ define([
                     return;
                 }
 
-                // If a number, add 'px' to the (except for certain CSS properties)
+                // If a number, add 'px' to the (except for certain CSS application.properties)
                 if (type === "number" && !jQuery.cssNumber[origName]) {
                     value += "px";
                 }
@@ -374,7 +374,7 @@ define([
         }
     );
 
-// These hooks are used by animate to expand properties
+// These hooks are used by animate to expand application.properties
     jQuery.each({
         margin: "",
         padding: "",

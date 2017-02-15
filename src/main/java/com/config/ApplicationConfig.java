@@ -8,7 +8,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @Configuration
-@PropertySource({"classpath:properties"})
+@PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "com")
 public class ApplicationConfig {
     @Bean

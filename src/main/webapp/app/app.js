@@ -1,7 +1,7 @@
 //Define an angular module for our app
 var ngApp = angular.module('ngApp', ['ngRoute', 'ngResource', 'satellizer']);
 
-ngApp.controller('mainCtrl', function ($scope, $http, $log, localStorageService, GroupFactory, PSFactory) {
+ngApp.controller('mainCtrl', function ($scope, $rootScope, $http, $log, localStorageService, GroupFactory, PSFactory) {
 
     $scope.main = {
         user: localStorageService.get("user"),
@@ -32,6 +32,9 @@ ngApp.controller('mainCtrl', function ($scope, $http, $log, localStorageService,
         window.history.back();
     };
 
+    $rootScope.$on('groupChanged', function(){
+        $scope.main.allGroups = GroupFactory.query();
+    });
 
 });
 

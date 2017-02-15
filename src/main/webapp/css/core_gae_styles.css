@@ -123,18 +123,9 @@ footer h4, footer h6 {
     color: #fff;
 }
 
-/*footer{
-    height: 100px;
-    width:100%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}*/
-
-
-
-
-
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
 .navbar-default {
     border-color: rgba(35, 35, 35, .05);
     background-color: #fff;
@@ -606,3 +597,7 @@ img::-moz-selection {
     text-transform: uppercase
 }
 /* Card End*/
+
+.wh70 {
+    min-height: 70vh;
+}

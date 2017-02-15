@@ -3,6 +3,7 @@ package com.groups.controller;
 import com.groups.domain.Group;
 import com.groups.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class GroupController {
     @Autowired
     private GroupService groupsService;
 
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping(
             method = RequestMethod.POST,
             headers = "Accept=application/json",
@@ -43,7 +45,7 @@ public class GroupController {
         return groupsService.getById(id);
     }
 
-
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping(
             value = "{id}",
             method = RequestMethod.PUT,
@@ -54,7 +56,7 @@ public class GroupController {
         groupsService.save(group);
     }
 
-
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping(
             value = "{id}",
             method = RequestMethod.DELETE

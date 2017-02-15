@@ -4,15 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Openshift e-shop">
+    <meta name="author" content="Georgy Georgiev">
     <link rel="icon" href="resources/images/favicon.jpg">
 
     <title>Openshift Spring App</title>
 
-    <style>
-
-    </style>
     <!-- Bootstrap core CSS -->
     <!--<link href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"/>
@@ -41,7 +38,7 @@
 			</div>
 		</div>
 	</header>-->
-<nav id="topNav" class="navbar navbar-default navbar-fixed-top">
+<nav id="topNav" class="navbar navbar-default navbar-fixed-top" ng-cloak>
     <div class="container">
         <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="collapse"
                 data-target="#collapsingNavbar">
@@ -54,10 +51,10 @@
                 <li class="nav-item" ng-repeat="row in main.allGroups">
                     <a class="nav-link page-scroll" href="\#items_list/{{row.id}}">{{row.name}}</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" ng-if="main.user.role==='ROLE_ADMIN'">
                     <a class="nav-link page-scroll" href="#items">Items</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" ng-if="main.user.role==='ROLE_ADMIN'">
                     <a class="nav-link page-scroll" href="#groups">Groups</a>
                 </li>
             </ul>
@@ -74,7 +71,7 @@
             <ul class="nav navbar-nav pull-xs-right" ng-if="main.user.id">
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="\#account_info/{{main.user.id}}">
-                        <img src="files/{{main.user.fileId}}" class="profile-image img-circle img-fluid" ng-if="!!main.user.fileId"/>
+                        <img src="files/{{main.user.fileId}}" class="profile-image img-circle img-fluid" ng-if="main.user.fileId"/>
                         Hello {{main.user.email}}
                     </a>
                 </li>
@@ -88,31 +85,25 @@
         </div>
     </div>
 </nav>
-<br><br>
-<!--<div class="page-header text-center">
-    <h1>GAE 1</h1>
-</div>-->
+<br>
+<br>
 
 <div class="container-fluid">
-
-    <div class="row">
+    <div class="row wh70">
         <div class="box">
-            <div class="col-lg-12">
+            <div class="col-lg-12" ng-cloak>
                 <div ng-view></div>
             </div>
         </div>
     </div>
-
-    <!--<pre>{{main | json}}</pre>-->
 </div>
 
 
 <!-- END page content -->
 
-<!--ADD SITEMAP/LINK TO NAVIGATION / NAV AGAIN in footer (it's cool and make footer bigger)-->
-
 <!--<pre>{{main.user | json}}</pre>-->
-<footer id="footer">
+
+<footer id="footer" ng-cloak>
     <div class="container">
         <div class="row">
             <div class="col-xs-6 col-sm-3">

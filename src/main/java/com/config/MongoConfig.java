@@ -2,8 +2,10 @@ package com.config;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
@@ -11,14 +13,23 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @Configuration
 @EnableMongoRepositories(basePackages = "com.*.repository")
 class MongoConfig extends AbstractMongoConfiguration {
+
+    @Value("${mongoDB.databaseName}")
+    private String databaseName;
+
     @Override
     public Mongo mongo() throws Exception {
-        return new MongoClient();
+        if(System.getenv("OPENSHIFT_MONGODB_DB_URL")!=null){
+            return new MongoClient(new MongoClientURI(System.getenv("OPENSHIFT_MONGODB_DB_URL")));
+        }else{
+            return new MongoClient();
+        }
+
     }
 
     @Override
     protected String getDatabaseName() {
-        return "springdata";
+        return databaseName;
     }
 
     @Override

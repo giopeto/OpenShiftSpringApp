@@ -37,7 +37,7 @@ define([
                     // Trust units reported by jQuery.css
                     unit = unit || start[3];
 
-                    // Make sure we update the tween properties later on
+                    // Make sure we update the tween application.properties later on
                     parts = parts || [];
 
                     // Iteratively approximate from a nonzero starting point
@@ -57,7 +57,7 @@ define([
                     } while (scale !== (scale = tween.cur() / target) && scale !== 1 && --maxIterations);
                 }
 
-                // Update tween properties
+                // Update tween application.properties
                 if (parts) {
                     start = tween.start = +start || +target || 0;
                     tween.unit = unit;

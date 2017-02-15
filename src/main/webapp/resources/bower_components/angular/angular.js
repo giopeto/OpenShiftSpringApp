@@ -991,7 +991,7 @@
     /**
      * Creates a shallow copy of an object, an array or a primitive.
      *
-     * Assumes that there are no proto properties for objects.
+     * Assumes that there are no proto application.properties for objects.
      */
     function shallowCopy(src, dst) {
         if (isArray(src)) {
@@ -1894,7 +1894,7 @@
 
     /**
      * Creates a new object without a prototype. This object is useful for lookup without having to
-     * guard against prototypically inherited properties via hasOwnProperty.
+     * guard against prototypically inherited application.properties via hasOwnProperty.
      *
      * Related micro-benchmarks:
      * - http://jsperf.com/object-create2
@@ -3238,7 +3238,7 @@
                 (isUndefined((fn.length == 2 && (fn !== jqLiteHasClass && fn !== jqLiteController)) ? arg1 : arg2))) {
                 if (isObject(arg1)) {
 
-                    // we are a write, but the object properties are the key/values
+                    // we are a write, but the object application.properties are the key/values
                     for (i = 0; i < nodeCount; i++) {
                         if (fn === jqLiteData) {
                             // data() takes the whole object in jQuery
@@ -6115,11 +6115,11 @@
                      * @description
                      * Retrieve information regarding a particular {@link $cacheFactory.Cache Cache}.
                      *
-                     * @returns {object} an object with the following properties:
+                     * @returns {object} an object with the following application.properties:
                      *   <ul>
                      *     <li>**id**: the id of the cache instance</li>
                      *     <li>**size**: the number of entries kept in the cache instance</li>
-                     *     <li>**...**: any additional properties from the options object when creating the
+                     *     <li>**...**: any additional application.properties from the options object when creating the
                      *       cache.</li>
                      *   </ul>
                      */
@@ -9148,7 +9148,7 @@
                     // This machinery is used to create an instance of the object before calling the
                     // controller's constructor itself.
                     //
-                    // This allows properties to be added to the controller before the constructor is
+                    // This allows application.properties to be added to the controller before the constructor is
                     // invoked. Primarily, this is used for isolate scope bindings in $compile.
                     //
                     // This feature is not intended for use by applications, and is thus not documented
@@ -10682,7 +10682,7 @@
                     var statusText = xhr.statusText || '';
 
                     // responseText is the old-school way of retrieving response (supported by IE9)
-                    // response/responseType properties were introduced in XHR Level2 spec (supported by IE10)
+                    // response/responseType application.properties were introduced in XHR Level2 spec (supported by IE10)
                     var response = ('response' in xhr) ? xhr.response : xhr.responseText;
 
                     // normalize IE9 bug (http://bugs.jquery.com/ticket/1450)
@@ -11083,7 +11083,7 @@
                         }
 
                     }, {
-                        // all of these properties are undocumented for now
+                        // all of these application.properties are undocumented for now
                         exp: text, //just for compatibility with regular watchers created via $watch
                         expressions: expressions,
                         $$watchDelegate: function (scope, listener) {
@@ -11445,7 +11445,7 @@
 
 
         /**
-         * Parse given html5 (regular) url string into properties
+         * Parse given html5 (regular) url string into application.properties
          * @param {string} url HTML5 url
          * @private
          */
@@ -11523,7 +11523,7 @@
 
 
         /**
-         * Parse given hashbang url into properties
+         * Parse given hashbang url into application.properties
          * @param {string} url Hashbang url
          * @private
          */
@@ -11890,7 +11890,7 @@
                         this.$$search = parseKeyValue(search);
                     } else if (isObject(search)) {
                         search = copy(search, {});
-                        // remove object undefined or null properties
+                        // remove object undefined or null application.properties
                         forEach(search, function (value, key) {
                             if (value == null) delete search[key];
                         });
@@ -12076,7 +12076,7 @@
          * @description
          * @param {(boolean|Object)=} mode If boolean, sets `html5Mode.enabled` to value.
          *   If object, sets `enabled`, `requireBase` and `rewriteLinks` to respective values. Supported
-         *   properties:
+         *   application.properties:
          *   - **enabled** – `{boolean}` – (default: false) If true, will rely on `history.pushState` to
          *     change urls where supported. Will fall back to hash-prefixed paths in browsers that do not
          *     support `pushState`.
@@ -15065,7 +15065,7 @@
      * Closures construction is expensive in terms of speed as well as memory:
      *   - No closures, instead use prototypical inheritance for API
      *   - Internal state needs to be stored on scope directly, which means that private state is
-     *     exposed as $$____ properties
+     *     exposed as $$____ application.properties
      *
      * Loop operations are optimized by using while(count--) { ... }
      *   - this means that in order to keep the same order of execution as addition we have to add
@@ -15251,7 +15251,7 @@
                      * thus stop participating in model change detection and listener notification by invoking.
                      *
                      * @param {boolean} isolate If true, then the scope does not prototypically inherit from the
-                     *         parent scope. The scope is isolated, as it can not see parent scope properties.
+                     *         parent scope. The scope is isolated, as it can not see parent scope application.properties.
                      *         When creating widgets, it is useful for the widget to not accidentally read parent
                      *         state.
                      *
@@ -15543,9 +15543,9 @@
                      * @kind function
                      *
                      * @description
-                     * Shallow watches the properties of an object and fires whenever any of the properties change
+                     * Shallow watches the application.properties of an object and fires whenever any of the application.properties change
                      * (for arrays, this implies watching the array items; for object maps, this implies watching
-                     * the properties). If a change is detected, the `listener` callback is fired.
+                     * the application.properties). If a change is detected, the `listener` callback is fired.
                      *
                      * - The `obj` collection is observed via standard $watch operation and is examined on every
                      *   call to $digest() to see if any items have been added, removed, or moved.
@@ -17927,7 +17927,7 @@
      * results both in the normalizing and parsing of the URL.  Normalizing means that a relative
      * URL will be resolved into an absolute URL in the context of the application document.
      * Parsing means that the anchor node's host, hostname, protocol, port, pathname and related
-     * properties are all populated to reflect the normalized URL.  This approach has wide
+     * application.properties are all populated to reflect the normalized URL.  This approach has wide
      * compatibility - Safari 1+, Mozilla 1+, Opera 7+,e etc.  See
      * http://www.aptana.com/reference/html/api/HTMLAnchorElement.html
      *
@@ -17938,7 +17938,7 @@
      * them.  (e.g. if you assign a.href = "foo", then a.protocol, a.host, etc. will be empty.)  We
      * work around that by performing the parsing in a 2nd step by taking a previously normalized
      * URL (e.g. by assigning to a.href) and assigning it a.href again.  This correctly populates the
-     * properties such as protocol, hostname, port, etc.
+     * application.properties such as protocol, hostname, port, etc.
      *
      * References:
      *   http://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement
@@ -20151,7 +20151,7 @@
          * or controls that have been previously removed without destroying their corresponding DOM element,
          * it's the developers responsiblity to make sure the current state propagates to the parent form.
          *
-         * For example, if an input control is added that is already `$dirty` and has `$error` properties,
+         * For example, if an input control is added that is already `$dirty` and has `$error` application.properties,
          * calling `$setDirty()` and `$validate()` afterwards will propagate the state to the parent form.
          */
         form.$addControl = function (control) {
@@ -25358,7 +25358,7 @@
              * perform a deep watch of objects, it only looks for a change of identity. If you only change
              * the property of the object then ngModel will not realise that the object has changed and
              * will not invoke the `$parsers` and `$validators` pipelines. For this reason, you should
-             * not change properties of the copy once it has been passed to `$setViewValue`.
+             * not change application.properties of the copy once it has been passed to `$setViewValue`.
              * Otherwise you may cause the model value on the scope to change incorrectly.
              *
              * <div class="alert alert-info">
@@ -27362,7 +27362,7 @@
                     }
 
                     // Store a list of elements from previous run. This is a hash where key is the item from the
-                    // iterator, and the value is objects with following properties.
+                    // iterator, and the value is objects with following application.properties.
                     //   - scope: bound scope
                     //   - element: previous element.
                     //   - index: position

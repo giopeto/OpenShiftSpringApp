@@ -2,7 +2,7 @@
 
 /* Groups Controller */
 
-ngApp.lazy.controller('groupsCtrl', function ($scope, $log, $location, $routeParams, GroupFactory) {
+ngApp.lazy.controller('groupsCtrl', function ($scope, $rootScope, $log, $location, $routeParams, GroupFactory) {
     var vm = this;
     vm.isLoading = false;
     vm.obj = {};
@@ -17,6 +17,7 @@ ngApp.lazy.controller('groupsCtrl', function ($scope, $log, $location, $routePar
     function save() {
         changeLoadingState();
         GroupFactory.save(vm.obj, function (data) {
+            $rootScope.$emit("groupChanged", {});
             goBack();
         }, function (error) {
             $log.log("Error: ", error);
@@ -45,9 +46,13 @@ ngApp.lazy.controller('groupsCtrl', function ($scope, $log, $location, $routePar
     };
 
     function remove(args) {
+        if(!confirm("Are you sure?")){
+            return;
+        }
         changeLoadingState();
         GroupFactory.delete(args, function (data) {
             vm.allObj.splice(args.index, 1);
+            $rootScope.$emit("groupChanged", {});
             changeLoadingState();
         }, function (error) {
             $log.log("Error: ", error);

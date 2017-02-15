@@ -427,7 +427,7 @@ define([
                         for (i = 0; i < delegateCount; i++) {
                             handleObj = handlers[i];
 
-                            // Don't conflict with Object.prototype properties (#13203)
+                            // Don't conflict with Object.prototype application.properties (#13203)
                             sel = handleObj.selector + " ";
 
                             if (matches[sel] === undefined) {
@@ -503,7 +503,7 @@ define([
                 return event;
             }
 
-            // Create a writable copy of the event object and normalize some properties
+            // Create a writable copy of the event object and normalize some application.properties
             var i, prop, copy,
                 type = event.type,
                 originalEvent = event,
@@ -646,7 +646,7 @@ define([
             this.type = src;
         }
 
-        // Put explicitly provided properties onto the event object
+        // Put explicitly provided application.properties onto the event object
         if (props) {
             jQuery.extend(this, props);
         }

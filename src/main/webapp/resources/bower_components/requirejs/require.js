@@ -84,7 +84,7 @@ var requirejs, require, define;
     }
 
     /**
-     * Cycles over properties in an object and calls a function for each
+     * Cycles over application.properties in an object and calls a function for each
      * property value. If the function returns a truthy value, then the
      * iteration is stopped.
      */
@@ -100,7 +100,7 @@ var requirejs, require, define;
     }
 
     /**
-     * Simple function to mix in properties from source into target,
+     * Simple function to mix in application.properties from source into target,
      * but only if target does not already have a property of the same name.
      */
     function mixin(target, source, force, deepStringMixin) {

@@ -28,7 +28,7 @@ define([
             var ret, hooks, notxml,
                 nType = elem.nodeType;
 
-            // Don't get/set properties on text, comment and attribute nodes
+            // Don't get/set application.properties on text, comment and attribute nodes
             if (!elem || nType === 3 || nType === 8 || nType === 2) {
                 return;
             }

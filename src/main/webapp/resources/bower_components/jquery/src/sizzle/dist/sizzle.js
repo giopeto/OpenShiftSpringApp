@@ -314,7 +314,7 @@
         var keys = [];
 
         function cache(key, value) {
-            // Use (key + " ") to avoid collision with native prototype properties (see Issue #157)
+            // Use (key + " ") to avoid collision with native prototype application.properties (see Issue #157)
             if (keys.push(key + " ") > Expr.cacheLength) {
                 // Only keep the most recent entries
                 delete cache[keys.shift()];
@@ -506,7 +506,7 @@
          ---------------------------------------------------------------------- */
 
         // Support: IE<8
-        // Verify that getAttribute really returns attributes and not properties
+        // Verify that getAttribute really returns attributes and not application.properties
         // (excepting IE8 booleans)
         support.attributes = assert(function (div) {
             div.className = "i";
@@ -891,7 +891,7 @@
         }
 
         var fn = Expr.attrHandle[name.toLowerCase()],
-        // Don't get fooled by Object.prototype properties (jQuery #13807)
+        // Don't get fooled by Object.prototype application.properties (jQuery #13807)
             val = fn && hasOwn.call(Expr.attrHandle, name.toLowerCase()) ?
                 fn(elem, name, !documentIsHTML) :
                 undefined;
@@ -1333,7 +1333,7 @@
                 return elem === document.activeElement && (!document.hasFocus || document.hasFocus()) && !!(elem.type || elem.href || ~elem.tabIndex);
             },
 
-            // Boolean properties
+            // Boolean application.properties
             "enabled": function (elem) {
                 return elem.disabled === false;
             },
@@ -1813,7 +1813,7 @@
                 // Add elements passing elementMatchers directly to results
                 // Keep `i` a string if there are no elements so `matchedCount` will be "00" below
                 // Support: IE<9, Safari
-                // Tolerate NodeList properties (IE: "length"; Safari: <number>) matching elements by id
+                // Tolerate NodeList application.properties (IE: "length"; Safari: <number>) matching elements by id
                 for (; i !== len && (elem = elems[i]) != null; i++) {
                     if (byElement && elem) {
                         j = 0;

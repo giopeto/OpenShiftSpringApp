@@ -73,7 +73,7 @@
          * @param {Object} route Mapping information to be assigned to `$route.current` on route
          *    match.
          *
-         *    Object properties:
+         *    Object application.properties:
          *
          *    - `controller` – `{(string|function()=}` – Controller fn that should be associated with
          *      newly created scope or the name of a {@link angular.Module#controller registered
@@ -484,7 +484,7 @@
                          * current route parameters with those specified in `newParams`.
                          * Provided property names that match the route's path segment
                          * definitions will be interpolated into the location's path, while
-                         * remaining properties will be treated as query params.
+                         * remaining application.properties will be treated as query params.
                          *
                          * @param {!Object<string, string>} newParams mapping of URL parameter names to values
                          */

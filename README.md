@@ -1,7 +1,7 @@
 # OpenShiftSpringApp
 ===========================
 
-Building E-shop. Live Preview hosted on [Openshift](http://testwildfly10-travelopenshift.rhcloud.com)
+Building E-shop. Live Preview hosted on [Openshift](http://testwildfly10-travelopenshift.rhcloud.com). User and password for admin user is admin
 
 About
 -----

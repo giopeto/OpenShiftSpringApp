@@ -3,6 +3,7 @@ package com.items.controller;
 import com.items.domain.Item;
 import com.items.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class ItemsController {
     @Autowired
     private ItemService itemService;
 
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping(
             method = RequestMethod.POST,
             headers = "Accept=application/json",
@@ -54,7 +56,7 @@ public class ItemsController {
         return itemService.getByGroupId(groupId);
     }
 
-
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping(
             value = "{id}",
             method = RequestMethod.PUT,
@@ -65,7 +67,7 @@ public class ItemsController {
         itemService.save(item);
     }
 
-
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping(
             value = "{id}",
             method = RequestMethod.DELETE

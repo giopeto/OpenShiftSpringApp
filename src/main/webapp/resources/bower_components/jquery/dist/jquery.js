@@ -520,7 +520,7 @@
         now: Date.now,
 
         // jQuery.support is not used in Core but other projects attach their
-        // properties to it so it needs to exist.
+        // application.properties to it so it needs to exist.
         support: support
     });
 
@@ -867,7 +867,7 @@
                 var keys = [];
 
                 function cache(key, value) {
-                    // Use (key + " ") to avoid collision with native prototype properties (see Issue #157)
+                    // Use (key + " ") to avoid collision with native prototype application.properties (see Issue #157)
                     if (keys.push(key + " ") > Expr.cacheLength) {
                         // Only keep the most recent entries
                         delete cache[keys.shift()];
@@ -1059,7 +1059,7 @@
                  ---------------------------------------------------------------------- */
 
                 // Support: IE<8
-                // Verify that getAttribute really returns attributes and not properties
+                // Verify that getAttribute really returns attributes and not application.properties
                 // (excepting IE8 booleans)
                 support.attributes = assert(function (div) {
                     div.className = "i";
@@ -1444,7 +1444,7 @@
                 }
 
                 var fn = Expr.attrHandle[name.toLowerCase()],
-                // Don't get fooled by Object.prototype properties (jQuery #13807)
+                // Don't get fooled by Object.prototype application.properties (jQuery #13807)
                     val = fn && hasOwn.call(Expr.attrHandle, name.toLowerCase()) ?
                         fn(elem, name, !documentIsHTML) :
                         undefined;
@@ -1886,7 +1886,7 @@
                         return elem === document.activeElement && (!document.hasFocus || document.hasFocus()) && !!(elem.type || elem.href || ~elem.tabIndex);
                     },
 
-                    // Boolean properties
+                    // Boolean application.properties
                     "enabled": function (elem) {
                         return elem.disabled === false;
                     },
@@ -2366,7 +2366,7 @@
                         // Add elements passing elementMatchers directly to results
                         // Keep `i` a string if there are no elements so `matchedCount` will be "00" below
                         // Support: IE<9, Safari
-                        // Tolerate NodeList properties (IE: "length"; Safari: <number>) matching elements by id
+                        // Tolerate NodeList application.properties (IE: "length"; Safari: <number>) matching elements by id
                         for (; i !== len && (elem = elems[i]) != null; i++) {
                             if (byElement && elem) {
                                 j = 0;
@@ -3600,12 +3600,12 @@
             if (typeof data === "string") {
                 cache[data] = value;
 
-                // Handle: [ owner, { properties } ] args
+                // Handle: [ owner, { application.properties } ] args
             } else {
                 // Fresh assignments by object are shallow copied
                 if (jQuery.isEmptyObject(cache)) {
                     jQuery.extend(this.cache[unlock], data);
-                    // Otherwise, copy the properties one-by-one to the cache object
+                    // Otherwise, copy the application.properties one-by-one to the cache object
                 } else {
                     for (prop in data) {
                         cache[prop] = data[prop];
@@ -3649,7 +3649,7 @@
             // [*]When the key is not a string, or both a key and value
             // are specified, set or extend (existing objects) with either:
             //
-            //   1. An object of properties
+            //   1. An object of application.properties
             //   2. A key and value
             //
             this.set(owner, key, value);
@@ -3719,7 +3719,7 @@
 //		paths to a single mechanism.
 //	3. Use the same single mechanism to support "private" and "user" data.
 //	4. _Never_ expose "private" data to user code (TODO: Drop _data, _removeData)
-//	5. Avoid exposing implementation details on user objects (eg. expando properties)
+//	5. Avoid exposing implementation details on user objects (eg. expando application.properties)
 //	6. Provide a clear path for implementation upgrade to WeakMap in 2014
 
     var rbrace = /^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,
@@ -3861,10 +3861,10 @@
 
                     // For HTML5 data-* attribute interop, we have to
                     // store property names with dashes in a camelCase form.
-                    // This might not apply to all properties...*
+                    // This might not apply to all application.properties...*
                     data_user.set(this, camelKey, value);
 
-                    // *... In the case of properties that might _actually_
+                    // *... In the case of application.properties that might _actually_
                     // have dashes, we need to also store a copy of that
                     // unchanged property.
                     if (key.indexOf("-") !== -1 && data !== undefined) {
@@ -4473,7 +4473,7 @@
                         for (i = 0; i < delegateCount; i++) {
                             handleObj = handlers[i];
 
-                            // Don't conflict with Object.prototype properties (#13203)
+                            // Don't conflict with Object.prototype application.properties (#13203)
                             sel = handleObj.selector + " ";
 
                             if (matches[sel] === undefined) {
@@ -4549,7 +4549,7 @@
                 return event;
             }
 
-            // Create a writable copy of the event object and normalize some properties
+            // Create a writable copy of the event object and normalize some application.properties
             var i, prop, copy,
                 type = event.type,
                 originalEvent = event,
@@ -4692,7 +4692,7 @@
             this.type = src;
         }
 
-        // Put explicitly provided properties onto the event object
+        // Put explicitly provided application.properties onto the event object
         if (props) {
             jQuery.extend(this, props);
         }
@@ -5705,7 +5705,7 @@
     })();
 
 
-// A method for quickly swapping in/out CSS properties to get correct calculations.
+// A method for quickly swapping in/out CSS application.properties to get correct calculations.
     jQuery.swap = function (elem, options, callback, args) {
         var ret, name,
             old = {};
@@ -5777,7 +5777,7 @@
         var i = extra === ( isBorderBox ? "border" : "content" ) ?
                 // If we already have the right measurement, avoid augmentation
                 4 :
-                // Otherwise initialize for horizontal or vertical properties
+                // Otherwise initialize for horizontal or vertical application.properties
                 name === "width" ? 1 : 0,
 
             val = 0;
@@ -5924,7 +5924,7 @@
             }
         },
 
-        // Don't automatically add "px" to these possibly-unitless properties
+        // Don't automatically add "px" to these possibly-unitless application.properties
         cssNumber: {
             "columnCount": true,
             "fillOpacity": true,
@@ -5940,7 +5940,7 @@
             "zoom": true
         },
 
-        // Add in properties whose names you wish to fix before
+        // Add in application.properties whose names you wish to fix before
         // setting or getting the value
         cssProps: {
             "float": "cssFloat"
@@ -5980,7 +5980,7 @@
                     return;
                 }
 
-                // If a number, add 'px' to the (except for certain CSS properties)
+                // If a number, add 'px' to the (except for certain CSS application.properties)
                 if (type === "number" && !jQuery.cssNumber[origName]) {
                     value += "px";
                 }
@@ -6081,7 +6081,7 @@
         }
     );
 
-// These hooks are used by animate to expand properties
+// These hooks are used by animate to expand application.properties
     jQuery.each({
         margin: "",
         padding: "",
@@ -6227,7 +6227,7 @@
             set: function (tween) {
                 // Use step hook for back compat.
                 // Use cssHook if its there.
-                // Use .style if available and use plain properties where available.
+                // Use .style if available and use plain application.properties where available.
                 if (jQuery.fx.step[tween.prop]) {
                     jQuery.fx.step[tween.prop](tween);
                 } else if (tween.elem.style && ( tween.elem.style[jQuery.cssProps[tween.prop]] != null || jQuery.cssHooks[tween.prop] )) {
@@ -6287,7 +6287,7 @@
                     // Trust units reported by jQuery.css
                     unit = unit || start[3];
 
-                    // Make sure we update the tween properties later on
+                    // Make sure we update the tween application.properties later on
                     parts = parts || [];
 
                     // Iteratively approximate from a nonzero starting point
@@ -6307,7 +6307,7 @@
                     } while (scale !== (scale = tween.cur() / target) && scale !== 1 && --maxIterations);
                 }
 
-                // Update tween properties
+                // Update tween application.properties
                 if (parts) {
                     start = tween.start = +start || +target || 0;
                     tween.unit = unit;
@@ -7095,7 +7095,7 @@
             var ret, hooks, notxml,
                 nType = elem.nodeType;
 
-            // Don't get/set properties on text, comment and attribute nodes
+            // Don't get/set application.properties on text, comment and attribute nodes
             if (!elem || nType === 3 || nType === 8 || nType === 2) {
                 return;
             }

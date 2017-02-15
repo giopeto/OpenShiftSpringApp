@@ -28,7 +28,7 @@ public class AccountController {
     )
     public Account save(@RequestBody Account a) {return accountService.save(a);}
 
-    /*@Secured({"ROLE_USER", "ROLE_ADMIN"})*/
+    /*@Secured({"ROLE_ADMIN"})*/
     @RequestMapping(
             method = RequestMethod.GET,
             headers = "Accept=application/json",
@@ -78,10 +78,8 @@ public class AccountController {
 
         Authentication auth = SecurityContextHolder.getContext()
                 .getAuthentication();
-        /*
-		 * System.out.println("Auth: " + auth); System.out.println("Auth 2: " +
-		 * auth.getCredentials()); System.out.println("Auth 3: " +
-		 * auth.getPrincipal());
-		 */
+        System.out.println("Auth: " + auth);
+        System.out.println("Auth 2: " + auth.getCredentials());
+        System.out.println("Auth 3: " + auth.getPrincipal());
     }
 }
