@@ -28,7 +28,6 @@ public class AccountController {
     )
     public Account save(@RequestBody Account a) {return accountService.save(a);}
 
-    /*@Secured({"ROLE_ADMIN"})*/
     @RequestMapping(
             method = RequestMethod.GET,
             headers = "Accept=application/json",
@@ -36,9 +35,6 @@ public class AccountController {
     )
     public Account getCurrentAccount(Principal principal) {
         Assert.notNull(principal);
-
-        System.out.println("Principal: " + principal.toString());
-
         return accountRepository.findOneByEmail(principal.getName());
     }
 

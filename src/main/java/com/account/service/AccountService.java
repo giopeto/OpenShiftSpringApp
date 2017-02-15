@@ -33,8 +33,8 @@ public class AccountService implements UserDetailsService {
 
     @PostConstruct
     protected void initialize() {
-        if(accountRepository.findOneByEmail("admin")==null){
-            save(new Account("admin", "admin", "ROLE_ADMIN"));
+        if(accountRepository.findOneByEmail("admin@admin.com")==null){
+            save(new Account("admin@admin.com", "admin", "ROLE_ADMIN"));
         }
     }
 
@@ -61,11 +61,7 @@ public class AccountService implements UserDetailsService {
     public void signin(Account account) {
         account.setRole(accountRepository.findOneByEmail(account.getEmail()).getRole());
         SecurityContextHolder.getContext().setAuthentication(authenticate(account));
-        Authentication auth = SecurityContextHolder.getContext()
-                .getAuthentication();
-        System.out.println("signin Auth: " + auth);
-        System.out.println("signin Auth 2: " + auth.getCredentials());
-        System.out.println("signin Auth 3: " + auth.getPrincipal());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     }
 
     private Authentication authenticate(Account account) {

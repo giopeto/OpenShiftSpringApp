@@ -218,7 +218,8 @@ ngApp.config(function ($controllerProvider, $compileProvider, $filterProvider, $
                 var deferred = $q.defer();
                 require([
                     'app/account/account.service.js',
-                    'app/account/account.controller.js'
+                    'app/account/account.controller.js',
+                    'app/account/email.directive.js'
                 ], function () {
                     $rootScope.$apply(function () {
                         deferred.resolve();
@@ -236,7 +237,8 @@ ngApp.config(function ($controllerProvider, $compileProvider, $filterProvider, $
                 var deferred = $q.defer();
                 require([
                     'app/account/account.service.js',
-                    'app/account/account.controller.js'
+                    'app/account/account.controller.js',
+                    'app/account/email.directive.js'
                 ], function () {
                     $rootScope.$apply(function () {
                         deferred.resolve();
