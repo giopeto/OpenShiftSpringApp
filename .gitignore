@@ -5,3 +5,4 @@
 /.idea
 *.iml
 /src/main/resources/rebel.xml
+pom.xml
