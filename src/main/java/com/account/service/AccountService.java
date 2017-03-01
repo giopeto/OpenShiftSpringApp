@@ -59,9 +59,22 @@ public class AccountService implements UserDetailsService {
     }
 
     public void signin(Account account) {
-        account.setRole(accountRepository.findOneByEmail(account.getEmail()).getRole());
-        SecurityContextHolder.getContext().setAuthentication(authenticate(account));
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String rawPassword = account.getPassword();
+        Account dbAccount = accountRepository.findOneByEmail(account.getEmail());
+        //account.setRole(accountRepository.findOneByEmail(account.getEmail()).getRole());
+
+        System.out.println(account.getPassword() + "  ==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==> " + dbAccount.getPassword());
+        System.out.println("Match: " + passwordEncoder.matches(account.getPassword(), dbAccount.getPassword()));
+        if(passwordEncoder.matches(account.getPassword(), dbAccount.getPassword())){
+            account.setRole(dbAccount.getRole());
+            SecurityContextHolder.getContext().setAuthentication(authenticate(account));
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        }else{
+            throw new UsernameNotFoundException("User not found");
+        }
+
+
+
     }
 
     private Authentication authenticate(Account account) {
