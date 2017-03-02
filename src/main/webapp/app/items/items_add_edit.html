@@ -39,7 +39,7 @@
                                     <label class="btn btn-default btn-file">
                                         Browse <input type="file" file-model="myFile" style="display: none;">
                                     </label>
-                                    <button ng-click="vm.uploadFile()" class="btn btn-warning">Upload file
+                                    <button ng-click="vm.uploadFile({metadata: {type: 'item'}})" class="btn btn-warning">Upload file
                                     </button>
                                 </div>
                             </div>

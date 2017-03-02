@@ -4,7 +4,7 @@
 
         <div class="row">
             <div class="col-lg-8">
-                <img class="img-fluid" src="files/{{vm.obj.fileIds[0]}}" alt="Item image">
+                <img class="img-fluid" ng-src="files/{{vm.obj.fileIds[0]}}" alt="Item image">
             </div>
             <div class="col-lg-4">
                 <h4>{{vm.obj.name}}</h4>
@@ -39,7 +39,7 @@
             <div class="col-sm-3" ng-repeat="row in vm.obj.fileIds">
                 <div class="card">
                     <a class="img-card" ng-click="vm.swapImage({id: row})" href="">
-                        <img src="files/{{row}}" />
+                        <img ng-src="files/{{row}}" />
                     </a>
                 </div>
             </div>
@@ -59,7 +59,7 @@
         <br>
 
         <div class="row" ng-repeat="comment in vm.obj.comments">
-            <img src="files/{{comment.userFileId}}" class="profile-image img-circle img-fluid" alt="User image"/>
+            <img ng-src="files/{{comment.userFileId}}" class="profile-image img-circle img-fluid" alt="User image"/>
             <b class="lead">{{comment.userEmail}}</b>:<br> {{comment.comment}}
             <br><br><br>
         </div>

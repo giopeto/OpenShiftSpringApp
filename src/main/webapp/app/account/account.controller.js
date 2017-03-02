@@ -52,12 +52,21 @@ ngApp.lazy.controller('accountsCtrl', function ($scope, $log, $location, $http, 
     }
 
     $rootScope.$on('filesChanged', function (args, data) {
-       $scope.main.user.fileId = data.fileId;
+        if(data.metadata.type !== 'user'){
+            return;
+        }
+
+        $scope.main.user.fileId = data.fileId;
 
         AccountFactory.update($scope.main.user, function (data) {
             localStorageService.set("user", $scope.main.user);
         }).error(function (error) {
-            $log.log("ERROR signin: ", error);
+
+            $log.log(error);
+            $log.log(JSON.stringify(error));
+            $log.log(JSON.parse(error));
+
+            $log.log("ERROR signin: ", JSON.stringify(error));
         });
     });
 

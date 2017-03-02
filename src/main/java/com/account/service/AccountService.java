@@ -53,28 +53,21 @@ public class AccountService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountRepository.findOneByEmail(username);
         if (account == null) {
-            throw new UsernameNotFoundException("user not found");
+            throw new UsernameNotFoundException("loadUserByUsername User not found: " + account.getEmail());
         }
         return createUser(account);
     }
 
     public void signin(Account account) {
-        String rawPassword = account.getPassword();
         Account dbAccount = accountRepository.findOneByEmail(account.getEmail());
-        //account.setRole(accountRepository.findOneByEmail(account.getEmail()).getRole());
-
-        System.out.println(account.getPassword() + "  ==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==>==> " + dbAccount.getPassword());
-        System.out.println("Match: " + passwordEncoder.matches(account.getPassword(), dbAccount.getPassword()));
-        if(passwordEncoder.matches(account.getPassword(), dbAccount.getPassword())){
+        if(dbAccount!=null && passwordEncoder.matches(account.getPassword(), dbAccount.getPassword())){
             account.setRole(dbAccount.getRole());
             SecurityContextHolder.getContext().setAuthentication(authenticate(account));
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         }else{
-            throw new UsernameNotFoundException("User not found");
+            System.out.println("Throw errr for user: " + account.getEmail());
+            throw new UsernameNotFoundException("signin User not found: " + account.getEmail());
         }
-
-
-
     }
 
     private Authentication authenticate(Account account) {

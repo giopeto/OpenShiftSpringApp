@@ -71,7 +71,7 @@
             <ul class="nav navbar-nav pull-xs-right" ng-if="main.user.id">
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="\#account_info/{{main.user.id}}">
-                        <img src="files/{{main.user.fileId}}" class="profile-image img-circle img-fluid" ng-if="main.user.fileId"/>
+                        <img ng-src="files/{{main.user.fileId}}" ng-if="main.user.fileId" class="profile-image img-circle img-fluid"/>
                         Hello {{main.user.email}}
                     </a>
                 </li>

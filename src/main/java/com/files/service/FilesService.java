@@ -8,7 +8,6 @@ import java.util.Map;
 
 @Service
 public interface FilesService {
-    public Map store(MultipartFile f);
-
+    Map store(MultipartFile f);
     GridFSDBFile getById(String id);
 }

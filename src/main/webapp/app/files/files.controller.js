@@ -7,7 +7,7 @@ ngApp.lazy.controller('filesCtrl', function ($rootScope, $scope, $http, $log) {
 
     vm.uploadFile = uploadFile;
 
-    function uploadFile() {
+    function uploadFile(args) {
         var uploadUrl = "/files";
         var file = $scope.myFile;
 
@@ -18,7 +18,8 @@ ngApp.lazy.controller('filesCtrl', function ($rootScope, $scope, $http, $log) {
                 headers: {'Content-Type': undefined}
             })
             .success(function (data) {
-                $rootScope.$emit("filesChanged", {fileId: data.id});
+                args.fileId = data.id;
+                $rootScope.$emit("filesChanged", args);
             })
             .error(function (error) {
                 $log.log("Error: ", error);

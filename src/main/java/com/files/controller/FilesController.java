@@ -30,15 +30,20 @@ public class FilesController {
     @RequestMapping(
             value = "{fileId}",
             method = RequestMethod.GET,
-            headers = "Accept=application/json",
-            produces = "application/json"
+            headers = "Accept=application/json"
     )
     public ResponseEntity<InputStreamResource> getById(@PathVariable String fileId) {
-        GridFSDBFile gridFsFile = fs.getById(fileId);
-        return ResponseEntity.ok()
-                .contentLength(gridFsFile.getLength())
-                .contentType(MediaType.parseMediaType(gridFsFile.getContentType()))
-                .body(new InputStreamResource(gridFsFile.getInputStream()));
+
+        System.out.println("FILE ID:::::::::::: " + fileId);
+
+        if(fileId!=null){
+            GridFSDBFile gridFsFile = fs.getById(fileId);
+            return ResponseEntity.ok()
+                    .contentLength(gridFsFile.getLength())
+                    .contentType(MediaType.parseMediaType(gridFsFile.getContentType()))
+                    .body(new InputStreamResource(gridFsFile.getInputStream()));
+        }
+        return null;
     }
 
 }

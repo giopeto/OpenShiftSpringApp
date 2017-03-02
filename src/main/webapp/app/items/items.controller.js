@@ -179,6 +179,9 @@ ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routePar
     }
 
     $rootScope.$on('filesChanged', function (args, data) {
+        if(data.metadata.type !== 'item'){
+            return;
+        }
         vm.obj.fileIds.push(data.fileId);
     });
 

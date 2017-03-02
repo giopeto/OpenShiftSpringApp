@@ -6,7 +6,7 @@
             <div class="col-sm-6">
                 <div class="card">
                     <a class="img-card" href="">
-                        <img src="files/{{main.user.fileId}}" class="img-fluid">
+                        <img ng-src="files/{{main.user.fileId}}" class="img-fluid">
                     </a>
                     <br />
                     <div class="card-content">
@@ -59,7 +59,7 @@
                             <label class="btn btn-default btn-file">
                                 Browse <input type="file" file-model="myFile" style="display: none;">
                             </label>
-                            <button ng-click="vm.uploadFile()" class="btn btn-warnings">Upload file
+                            <button ng-click="vm.uploadFile({metadata: {type: 'user'}})" class="btn btn-warnings">Upload file
                             </button>
                         </div>
                     </div>

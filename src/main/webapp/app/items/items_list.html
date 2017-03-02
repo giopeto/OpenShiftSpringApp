@@ -6,7 +6,7 @@
                 <div class="col-sm-6" ng-repeat="row in vm.allObj">
                     <div class="card">
                         <a class="img-card" ng-click="vm.info({id: row.id})" href="">
-                            <img src="files/{{row.fileIds[0]}}" />
+                            <img ng-src="files/{{row.fileIds[0]}}" />
                         </a>
                         <br />
                         <div class="card-content">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-
+</div>
 
 
         <!--<div class="row">
