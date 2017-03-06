@@ -72,10 +72,6 @@ public class AccountController {
     @RequestMapping(value = "/logOut", method = RequestMethod.GET)
     public void logOut() {
 
-        Authentication auth = SecurityContextHolder.getContext()
-                .getAuthentication();
-        System.out.println("Auth: " + auth);
-        System.out.println("Auth 2: " + auth.getCredentials());
-        System.out.println("Auth 3: " + auth.getPrincipal());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     }
 }
