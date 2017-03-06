@@ -40,6 +40,9 @@ public class AccountService implements UserDetailsService {
 
     @Transactional
     public Account save(Account account) {
+        if(accountRepository.findOneByEmail(account.getEmail()) != null){
+            throw new UsernameNotFoundException("111111   There is an account with that email address: " + account.getEmail());
+        }
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         accountRepository.save(account);
 
@@ -53,20 +56,20 @@ public class AccountService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountRepository.findOneByEmail(username);
         if (account == null) {
-            throw new UsernameNotFoundException("loadUserByUsername User not found: " + account.getEmail());
+            throw new UsernameNotFoundException("222222   User not found: " + account.getEmail());
         }
         return createUser(account);
     }
 
     public void signin(Account account) {
         Account dbAccount = accountRepository.findOneByEmail(account.getEmail());
+        System.out.println("Before Error: "+dbAccount.toString());
         if(dbAccount!=null && passwordEncoder.matches(account.getPassword(), dbAccount.getPassword())){
             account.setRole(dbAccount.getRole());
             SecurityContextHolder.getContext().setAuthentication(authenticate(account));
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         }else{
-            System.out.println("Throw errr for user: " + account.getEmail());
-            throw new UsernameNotFoundException("signin User not found: " + account.getEmail());
+            throw new UsernameNotFoundException("33333333   Username not found  or password not match.");
         }
     }
 

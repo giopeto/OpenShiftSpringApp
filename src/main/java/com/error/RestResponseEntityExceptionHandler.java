@@ -11,16 +11,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-/**
- * Created by george on 3/2/17.
- */
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = { IllegalArgumentException.class, IllegalStateException.class, UsernameNotFoundException.class})
     protected ResponseEntity<Object> handleConflict(RuntimeException ex, WebRequest request) {
-        ObjectNode node = JsonNodeFactory.instance.objectNode(); // initializing
-        node.put("error", "User not found"); // building
+        ObjectNode node = JsonNodeFactory.instance.objectNode();
+        node.put("error", ex.getMessage());
         return handleExceptionInternal(ex, node,
                 new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }

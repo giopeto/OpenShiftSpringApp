@@ -2,7 +2,7 @@
 
 /* Items Controller */
 
-ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routeParams, $location, $http, ItemFactory, GroupFactory, PSFactory, localStorageService) {
+ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routeParams, $location, $http, ItemFactory, GroupFactory, PSFactory, FilesFactory) {
     var vm = this;
 
     vm.isLoading = false;
@@ -115,6 +115,11 @@ ngApp.lazy.controller('itemsCtrl', function ($rootScope, $scope, $log, $routePar
 
     function removeFile(args) {
         vm.obj.fileIds.splice(args.index, 1);
+        FilesFactory.delete(args, function (data) {
+
+        }, function (error) {
+            $log.log("Error: ", error);
+        });
     };
 
 
