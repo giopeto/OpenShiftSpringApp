@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
 
 @RestController
+@Secured({"ROLE_ADMIN"})
 @RequestMapping("/files")
 public class FilesController {
     @Autowired
@@ -33,10 +35,8 @@ public class FilesController {
             headers = "Accept=application/json"
     )
     public ResponseEntity<InputStreamResource> getById(@PathVariable String fileId) {
-
-        System.out.println("FILE ID:::::::::::: " + fileId);
-
-        if(fileId!=null){
+        //Todo: don't send {{row}
+        if(fileId!=null && !fileId.equals("{{row}}")){
             GridFSDBFile gridFsFile = fs.getById(fileId);
             return ResponseEntity.ok()
                     .contentLength(gridFsFile.getLength())
@@ -44,6 +44,15 @@ public class FilesController {
                     .body(new InputStreamResource(gridFsFile.getInputStream()));
         }
         return null;
+    }
+
+
+    @RequestMapping(
+            value = "{id}",
+            method = RequestMethod.DELETE
+    )
+    public void delete(@PathVariable String id) {
+        fs.delete(id);
     }
 
 }
