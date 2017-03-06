@@ -13,12 +13,12 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Map;
 
 @RestController
-@Secured({"ROLE_ADMIN"})
 @RequestMapping("/files")
 public class FilesController {
     @Autowired
     FilesService fs;
 
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping(
             method = RequestMethod.POST,
             headers = "Accept=application/json",
@@ -46,7 +46,7 @@ public class FilesController {
         return null;
     }
 
-
+    @Secured({"ROLE_ADMIN"})
     @RequestMapping(
             value = "{id}",
             method = RequestMethod.DELETE
